@@ -28,7 +28,7 @@ class DrawerItem extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => UserProfile(),
+                  builder: (context) => ProfilePage(),
                 ),
               );
             },
@@ -41,7 +41,7 @@ class DrawerItem extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => UserProfile(),
+                  builder: (context) => ProfilePage(),
                 ),
               );
             },
