@@ -1,3 +1,4 @@
+import 'package:ama/screens/setting_screen.dart';
 import 'package:ama/screens/user_profile.dart';
 import 'package:flutter/material.dart';
 
@@ -21,10 +22,6 @@ class DrawerItem extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.message),
-            title: Text('Messages'),
-          ),
-          ListTile(
             leading: Icon(Icons.account_circle),
             title: Text('Profile'),
             onTap: () {
@@ -37,8 +34,33 @@ class DrawerItem extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: Icon(Icons.notifications),
+            title: Text('Notifications'),
+            trailing: Text("2"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UserProfile(),
+                ),
+              );
+            },
+          ),
+          ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SettingScreen(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.login_outlined),
+            title: Text('Log Out'),
           ),
         ],
       ),
