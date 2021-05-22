@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class SearchBar extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
+    return Center(
+      child: Text("home screen"),
     );
   }
 }

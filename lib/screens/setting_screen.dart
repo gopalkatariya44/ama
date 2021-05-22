@@ -27,10 +27,12 @@ class SettingScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(Icons.light_mode),
-                            Text("Darkmode"),
-                            SizedBox(
-                              width: 200,
+                            Row(
+                              children: [
+                                Icon(Icons.light_mode),
+                              SizedBox(width: 30),
+                                Text("Darkmode"),
+                              ],
                             ),
                             IconButton(
                               onPressed: () {},
@@ -62,7 +64,7 @@ class SettingScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
