@@ -1,5 +1,5 @@
 import 'package:ama/screens/drawer.dart';
-import 'package:ama/screens/user_profile.dart';
+import 'package:ama/screens/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {

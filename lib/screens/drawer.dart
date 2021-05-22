@@ -1,5 +1,5 @@
 import 'package:ama/screens/setting_screen.dart';
-import 'package:ama/screens/user_profile.dart';
+import 'package:ama/screens/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class DrawerItem extends StatelessWidget {
@@ -20,6 +20,18 @@ class DrawerItem extends StatelessWidget {
                 fontSize: 24,
               ),
             ),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfilePage(),
+                ),
+              );
+            },
           ),
           ListTile(
             leading: Icon(Icons.account_circle),
@@ -61,6 +73,7 @@ class DrawerItem extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.login_outlined),
             title: Text('Log Out'),
+            onTap: (){},
           ),
         ],
       ),
