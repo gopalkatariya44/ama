@@ -1,6 +1,8 @@
 import 'dart:async';
-import 'package:ama/screens/home_screen%20.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../routes.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -12,13 +14,10 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 5),
-      () => Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => MyHomePage(title: 'Manager'),
-        ),
+      Duration(
+        seconds: 1,
       ),
+      () => Navigator.pushReplacementNamed(context, Routes.homeScreen),
     );
   }
 

@@ -1,29 +1,37 @@
+import 'package:ama/routes.dart';
 import 'package:ama/screens/BottomNavigationBar/chat_screen.dart';
 import 'package:ama/screens/BottomNavigationBar/employee_screen.dart';
 import 'package:ama/screens/drawer.dart';
 import 'package:ama/screens/BottomNavigationBar/home.dart';
-import 'package:ama/screens/notifications_screen.dart';
 import 'package:ama/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'BottomNavigationBar/calculator.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
-  List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
-    EmployeesData(),
-    ChatScreen(),
-    Calculator(),
+  List<Map<String, dynamic>> _widgetOptions = [
+    {
+      'title': "Manager",
+      'page': HomePage(),
+    },
+    {
+      'title': "Employees Data",
+      'page': EmployeesData(),
+    },
+    {
+      'title': "Chats",
+      'page': ChatScreen(),
+    },
+    {
+      'title': "Calculator",
+      'page': Calculator(),
+    },
   ];
 
   void _onItemTapped(int index) {
@@ -36,17 +44,17 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title), //app title
+        title: Text(_widgetOptions[_selectedIndex]['title']), //app title
         actions: [
           IconButton(
             icon: Icon(
               Icons.notifications, // search button
             ),
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => NotificationsScreen()));
+              Navigator.pushNamed(
+                context,
+                Routes.notificationScreen,
+              );
             },
           ),
           IconButton(
@@ -54,15 +62,16 @@ class _MyHomePageState extends State<MyHomePage> {
               Icons.search, // search button
             ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SearchBar()));
+              showSearch(
+                context: context,
+                delegate: SearchBar(),
+              );
             },
           ),
         ],
       ),
       drawer: DrawerItem(),
-      body: _widgetOptions.elementAt(_selectedIndex),
-    
+      body: _widgetOptions[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -82,7 +91,6 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Calculator',
           ),
         ],
-        
         currentIndex: _selectedIndex,
         elevation: 10,
         unselectedItemColor: Colors.green[200],
