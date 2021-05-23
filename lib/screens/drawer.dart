@@ -13,12 +13,54 @@ class DrawerItem extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.green,
             ),
-            child: Text(
-              'Drawer Header',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Image.asset(
+                  'assets/images/as.png',
+                  fit: BoxFit.cover,
+                  cacheHeight: 60,
+                  cacheWidth: 60,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Username',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
+                    Text(
+                      'Status',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
+                ),
+                GestureDetector(
+                  child: CircleAvatar(
+                    backgroundColor: Colors.green,
+                    radius: 14.0,
+                    child: Icon(
+                      Icons.edit,
+                      color: Colors.white,
+                      size: 16.0,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfilePage(),
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
           ),
           ListTile(
@@ -46,19 +88,6 @@ class DrawerItem extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Notifications'),
-            trailing: Text("2"),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ProfilePage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
             onTap: () {
@@ -73,7 +102,7 @@ class DrawerItem extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.login_outlined),
             title: Text('Log Out'),
-            onTap: (){},
+            onTap: () {},
           ),
         ],
       ),

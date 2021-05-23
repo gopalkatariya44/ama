@@ -1,6 +1,6 @@
+import 'package:ama/screens/SplashScreen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'screens/home_screen .dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: MyHomePage(title: 'Manager'),
+      home: SplashScreen(),
     );
   }
 }

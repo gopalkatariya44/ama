@@ -1,7 +1,30 @@
 import 'package:ama/screens/profile_page.dart';
 import 'package:flutter/material.dart';
 
-class SettingScreen extends StatelessWidget {
+class SettingScreen extends StatefulWidget {
+  @override
+  _SettingScreenState createState() => _SettingScreenState();
+}
+
+class _SettingScreenState extends State<SettingScreen> {
+  bool isSwitched = false;
+
+  //togalswitch Button
+
+  void toggleSwitch(bool value) {
+    if (isSwitched == false) {
+      setState(() {
+        isSwitched = true;
+      });
+      print('Switch Button is ON');
+    } else {
+      setState(() {
+        isSwitched = false;
+      });
+      print('Switch Button is OFF');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,9 +55,9 @@ class SettingScreen extends StatelessWidget {
                                 Text("Darkmode"),
                               ],
                             ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.toggle_on),
+                            Switch(
+                              value: isSwitched,
+                              onChanged: toggleSwitch,
                             ),
                           ],
                         ),
