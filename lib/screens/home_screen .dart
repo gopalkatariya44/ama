@@ -62,9 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Icons.search, // search button
             ),
             onPressed: () {
-              //TODO: change to real show search
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SearchBar()));
+              showSearch(
+                context: context,
+                delegate: SearchBar(),
+              );
             },
           ),
         ],
