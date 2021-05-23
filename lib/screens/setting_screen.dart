@@ -32,12 +32,12 @@ class _SettingScreenState extends State<SettingScreen> {
         title: Text("Setting"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(2.0),
         child: Container(
           child: ListView(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(1.0),
                 child: Column(
                   children: [
                     Container(
@@ -67,7 +67,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(1.0),
                 child: Column(
                   children: [
                     GestureDetector(
@@ -98,7 +98,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(1.0),
                 child: Column(
                   children: [
                     GestureDetector(

@@ -8,37 +8,103 @@ class EmployeesData extends StatefulWidget {
 class _EmployeesDataState extends State<EmployeesData> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(2.0),
-      child: Column(
+    return SingleChildScrollView(
+          child: Column(
         children: [
           Container(
-            color: Colors.green[200],
+            color: Colors.white,
             width: double.infinity,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset(
-                    'assets/images/as.png',
-                    fit: BoxFit.cover,
-                    cacheHeight: 50,
-                    cacheWidth: 50,
-                  ),
-                  SizedBox(width: 25),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Row(
                     children: [
-                      Text(
-                        'Username',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
+                      Image.asset(
+                        'assets/images/as.png',
+                        fit: BoxFit.cover,
+                        cacheHeight: 50,
+                        cacheWidth: 50,
                       ),
+                      SizedBox(width: 25),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Username',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 17,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'Description',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                      
                     ],
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("100.00 \$"),
+                  )
+                ],
+              ),
+            ),
+          ),
+          Container(
+            color: Colors.white,
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Image.asset(
+                        'assets/images/as.png',
+                        fit: BoxFit.cover,
+                        cacheHeight: 50,
+                        cacheWidth: 50,
+                      ),
+                      SizedBox(width: 25),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Username',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 17,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'Description',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                      
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("89.00 \$"),
+                  )
                 ],
               ),
             ),
