@@ -1,4 +1,4 @@
-import 'package:ama/routes.dart';
+import 'package:ama/resources/routes.dart';
 import 'package:ama/screens/BottomNavigationBar/chat_screen.dart';
 import 'package:ama/screens/BottomNavigationBar/employee_screen.dart';
 import 'package:ama/screens/drawer.dart';
