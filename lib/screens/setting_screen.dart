@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:ama/screens/profile_page.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +28,7 @@ class SettingScreen extends StatelessWidget {
                             Row(
                               children: [
                                 Icon(Icons.light_mode),
-                              SizedBox(width: 30),
+                                SizedBox(width: 30),
                                 Text("Darkmode"),
                               ],
                             ),
