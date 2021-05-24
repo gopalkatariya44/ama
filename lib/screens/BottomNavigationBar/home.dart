@@ -12,16 +12,17 @@ class HomePage extends StatelessWidget {
         children: [
           if (sareeProvider == null) CircularProgressIndicator(),
           if (sareeProvider!.sarees.isEmpty)
-            Center(
-                child: Container(
-                    height: 40, child: Text("No Sarees please add some"))),
+            Container(
+              child: Center(child: Text("No Sarees please add some")),
+            ),
           if (sareeProvider.sarees.isNotEmpty)
             Expanded(
               child: ListView.builder(
                 itemBuilder: (ctx, index) {
                   return ListTile(
                     leading: Image.asset(
-                      sareeProvider.sarees[index]!.imageUrl,
+                      'assets/images/as.png',
+                     // sareeProvider.sarees[index]!.imageUrl,
                       fit: BoxFit.cover,
                       cacheHeight: 60,
                       cacheWidth: 60,
@@ -31,7 +32,22 @@ class HomePage extends StatelessWidget {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(sareeProvider.sarees[index]!.description),
-                    trailing: Text("data"),
+                    trailing: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Total: " +
+                              sareeProvider.sarees[index]!.size.toString(),
+                        ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        Text(
+                          "\u{20B9} " + sareeProvider.sarees[index]!.price.toString(),
+                        ),
+                      ],
+                    ),
+                    onTap: () {},
                   );
                 },
                 itemCount: sareeProvider.sarees.length,

@@ -3,6 +3,7 @@ import 'package:ama/modal/sareeschanger.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:image_cropper/image_cropper.dart';
 
 class AddSareeScreen extends StatefulWidget {
   @override
@@ -81,12 +82,6 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
       appBar: AppBar(
         title: Text("Add Saree"),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.save),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: Container(
         padding: EdgeInsets.all(16),
@@ -95,6 +90,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
           child: ListView(
             children: [
               Container(
+                color: Colors.grey,
                 height: 200,
                 width: 200,
                 child: imagePickedFromFile
@@ -105,19 +101,23 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                         ),
                       ),
               ),
+              SizedBox(height:10),
               Container(
                 width: 200,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     elevation: 8,
                     shape: const BeveledRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(7)),
+                      borderRadius: BorderRadius.all(Radius.circular(3)),
                     ),
                   ),
                   onPressed: startImagePicker,
-                  child: Text(
-                    "Pick File",
-                    style: TextStyle(color: Colors.white),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Pick Image",
+                      style: TextStyle(color: Colors.white,fontSize: 16),
+                    ),
                   ),
                 ),
               ),
@@ -127,6 +127,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
               TextFormField(
                 key: UniqueKey(),
                 decoration: InputDecoration(
+                  border: OutlineInputBorder(),
                   hintText: "Saree Name",
                 ),
                 validator: (value) {
@@ -148,10 +149,11 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 ),
                 decoration: InputDecoration(
                   hintText: "Price",
+                  border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Please enter price name";
+                    return "Please enter price of saree";
                   }
                   return null;
                 },
@@ -165,10 +167,11 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
               TextFormField(
                 decoration: InputDecoration(
                   hintText: "Size",
+                  border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Please enter the size of saree";
+                    return "Please enter the Number of saree";
                   }
                   return null;
                 },
@@ -182,6 +185,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
               TextFormField(
                 decoration: InputDecoration(
                   hintText: "Description",
+                  border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -199,12 +203,12 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
               Center(
                 child: Container(
                   height: 45,
-                  width: 160,
+                  width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 8,
                       shape: const BeveledRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(7)),
+                        borderRadius: BorderRadius.all(Radius.circular(3)),
                       ),
                     ),
                     onPressed: () => onSave(),
