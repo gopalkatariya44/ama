@@ -101,7 +101,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                         ),
                       ),
               ),
-              SizedBox(height:10),
+              SizedBox(height: 10),
               Container(
                 width: 200,
                 child: ElevatedButton(
@@ -116,19 +116,20 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "Pick Image",
-                      style: TextStyle(color: Colors.white,fontSize: 16),
+                      style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextFormField(
                 key: UniqueKey(),
                 decoration: InputDecoration(
+                  labelText: "Name",
                   border: OutlineInputBorder(),
-                  hintText: "Saree Name",
+                  hintText: "Enter Saree Name",
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -140,7 +141,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                   title = value!;
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextFormField(
@@ -148,7 +149,8 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                   decimal: true,
                 ),
                 decoration: InputDecoration(
-                  hintText: "Price",
+                  labelText: "Price",
+                  hintText: "Enter Price of Saree",
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
@@ -161,12 +163,13 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                   price = double.parse(value!);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: "Size",
+                  labelText: "Size",
+                  hintText: "Enter Size of sarees",
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
@@ -179,12 +182,14 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                   size = double.parse(value!);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextFormField(
+                
                 decoration: InputDecoration(
-                  hintText: "Description",
+                  labelText: "Description",
+                  hintText: "Enter Description here",
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
@@ -197,7 +202,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                   description = value!;
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Center(

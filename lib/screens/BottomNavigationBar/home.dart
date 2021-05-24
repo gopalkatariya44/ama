@@ -1,6 +1,7 @@
 import 'package:ama/modal/sareeschanger.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -20,12 +21,32 @@ class HomePage extends StatelessWidget {
               child: ListView.builder(
                 itemBuilder: (ctx, index) {
                   return ListTile(
-                    leading: Image.asset(
-                      'assets/images/as.png',
-                     // sareeProvider.sarees[index]!.imageUrl,
-                      fit: BoxFit.cover,
-                      cacheHeight: 60,
-                      cacheWidth: 60,
+                    leading: GestureDetector(
+                      child: Image.asset(
+                        //Replace with user Image
+                        // sareeProvider.sarees[index]!.imageUrl,
+                        'assets/images/as.png',
+                        fit: BoxFit.cover,
+                        cacheHeight: 60,
+                        cacheWidth: 60,
+                      ),
+                      onTap: () {
+                        AwesomeDialog(
+                          dialogType: DialogType.NO_HEADER,
+                          headerAnimationLoop: false,
+                          context: context,
+                          body: Container(
+                            child: Image.asset(
+                              //Replace with user Image
+                              // sareeProvider.sarees[index]!.imageUrl,
+                              'assets/images/as.png',
+                              fit: BoxFit.cover,
+                              cacheHeight: 60,
+                              cacheWidth: 60,
+                            ),
+                          ),
+                        )..show();
+                      },
                     ),
                     title: Text(
                       sareeProvider.sarees[index]!.title,
@@ -34,16 +55,19 @@ class HomePage extends StatelessWidget {
                     subtitle: Text(sareeProvider.sarees[index]!.description),
                     trailing: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          "Total: " +
-                              sareeProvider.sarees[index]!.size.toString(),
+                          sareeProvider.sarees[index]!.size.toString(),
+                          style: TextStyle(color: Colors.red),
                         ),
                         SizedBox(
                           height: 3,
                         ),
                         Text(
-                          "\u{20B9} " + sareeProvider.sarees[index]!.price.toString(),
+                          "\u{20B9} " +
+                              sareeProvider.sarees[index]!.price.toString(),
+                          style: TextStyle(color: Colors.green),
                         ),
                       ],
                     ),
