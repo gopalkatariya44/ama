@@ -13,6 +13,7 @@ class _EmployeesDataState extends State<EmployeesData> {
         children: [
           Container(
             color: Colors.white,
+            height: 80,
             width: double.infinity,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -63,6 +64,7 @@ class _EmployeesDataState extends State<EmployeesData> {
           Container(
             color: Colors.white,
             width: double.infinity,
+            height: 80,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
