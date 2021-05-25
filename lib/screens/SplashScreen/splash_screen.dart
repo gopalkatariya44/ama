@@ -27,9 +27,12 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.green,
-      child: Image.asset(
-        'assets/images/as1.jpg',
-        scale: 10,
+      child: ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: Image.asset(
+          'assets/images/as1.jpg',
+          scale: 10,
+        ),
       ),
     );
   }

@@ -13,54 +13,47 @@ class DrawerItem extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.green,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Image.asset(
-                  'assets/images/as.png',
-                  fit: BoxFit.cover,
-                  cacheHeight: 60,
-                  cacheWidth: 60,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Username',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Text(
-                      'Status',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-                GestureDetector(
-                  child: CircleAvatar(
-                    backgroundColor: Colors.green,
-                    radius: 14.0,
-                    child: Icon(
-                      Icons.edit,
-                      color: Colors.white,
-                      size: 16.0,
-                    ),
+            child: GestureDetector(
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/images/as.png',
+                    fit: BoxFit.cover,
+                    cacheHeight: 40,
+                    cacheWidth: 40,
+                    width: 80,
                   ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ProfilePage(),
+                  SizedBox(width: 20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Username',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
                       ),
-                    );
-                  },
-                ),
-              ],
+                      Text(
+                        'Status',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(),
+                  ),
+                );
+              },
             ),
           ),
           ListTile(

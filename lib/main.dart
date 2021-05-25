@@ -1,7 +1,6 @@
 import 'package:ama/screens/home_screen%20.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'modal/sareeschanger.dart';
 import 'resources/routes.dart';
 import '../screens/SplashScreen/splash_screen.dart';

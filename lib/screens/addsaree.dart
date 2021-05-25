@@ -3,7 +3,6 @@ import 'package:ama/modal/sareeschanger.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:image_cropper/image_cropper.dart';
 
 class AddSareeScreen extends StatefulWidget {
   @override
@@ -25,13 +24,35 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
 
   void startImagePicker() async {
     imagePicker = await picker.getImage(
-      source: ImageSource.camera,
+      source: ImageSource.gallery,
       imageQuality: 7,
     );
+
     setState(() {
       imagePickedFromFile = true;
     });
   }
+
+//EXAMPLE
+  // _imgFromCamera() async {
+  //   File image = await ImagePicker.pickImage(
+  //       source: ImageSource.camera, imageQuality: 50);
+
+  //   setState(() {
+  //     _image = image;
+  //   });
+  // }
+
+  // _imgFromGallery() async {
+  //   File image = await ImagePicker.pickImage(
+  //       source: ImageSource.gallery, imageQuality: 50);
+
+  //   setState(() {
+  //     _image = image;
+  //   });
+  // }
+
+//EXAMPLE
 
   void onSave() async {
     if (key.currentState!.validate()) {
@@ -73,6 +94,20 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
         ),
       );
     }
+  }
+
+  DateTime selectedDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        selectedDate = picked;
+      });
   }
 
   @override
@@ -186,7 +221,6 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 height: 20,
               ),
               TextFormField(
-                
                 decoration: InputDecoration(
                   labelText: "Description",
                   hintText: "Enter Description here",

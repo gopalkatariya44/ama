@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 
 class HomePage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     var sareeProvider = Provider.of<SareesChanger?>(context);
@@ -24,14 +25,15 @@ class HomePage extends StatelessWidget {
                     leading: GestureDetector(
                       child: Image.asset(
                         //Replace with user Image
-                        // sareeProvider.sarees[index]!.imageUrl,
-                        'assets/images/as.png',
+                        sareeProvider.sarees[index]!.imageUrl,
+                        // 'assets/images/as.png',
                         fit: BoxFit.cover,
                         cacheHeight: 60,
                         cacheWidth: 60,
                       ),
                       onTap: () {
                         AwesomeDialog(
+                          width: 500,
                           dialogType: DialogType.NO_HEADER,
                           headerAnimationLoop: false,
                           context: context,
@@ -52,7 +54,11 @@ class HomePage extends StatelessWidget {
                       sareeProvider.sarees[index]!.title,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    subtitle: Text(sareeProvider.sarees[index]!.description),
+                    subtitle: Row(
+                      children: [
+                        Text(sareeProvider.sarees[index]!.description),
+                      ],
+                    ),
                     trailing: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
