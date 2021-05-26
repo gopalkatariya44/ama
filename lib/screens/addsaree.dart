@@ -33,7 +33,6 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
       imagePickedFromFile = true;
     });
   }
-  
 
 //EXAMPLE
   // _imgFromCamera() async {
@@ -99,7 +98,6 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
   }
 
   DateTime selectedDate = DateTime.now();
-
 
   @override
   Widget build(BuildContext context) {
@@ -210,6 +208,16 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 onSaved: (value) {
                   size = double.parse(value!);
                 },
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextField(
+                 decoration: InputDecoration(
+                  labelText: "Pick date",
+                  hintText: "Enter Date here",
+                  border: OutlineInputBorder(),
+                ),
               ),
               const SizedBox(
                 height: 20,
