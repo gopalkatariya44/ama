@@ -1,3 +1,4 @@
+import 'package:ama/modal/sarees.dart';
 import 'package:ama/modal/sareeschanger.dart';
 import 'package:ama/screens/item_details.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +88,7 @@ class HomePage extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ItemDetails(),
+                          builder: (context) => ItemDetails(saree: sareeProvider.sarees[index],),
                         ),
                       );
                     },

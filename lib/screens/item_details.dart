@@ -1,40 +1,39 @@
-import 'package:ama/modal/sareeschanger.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import 'dart:io';
 
-class ItemDetails extends StatelessWidget {
+import 'package:ama/modal/sarees.dart';
+import 'package:flutter/material.dart';
+
+// ignore: must_be_immutable
+class ItemDetails extends StatefulWidget {
+  Sarees? saree;
+
+  ItemDetails({required this.saree});
+
+  @override
+  _ItemDetailsState createState() => _ItemDetailsState();
+}
+
+class _ItemDetailsState extends State<ItemDetails> {
   @override
   Widget build(BuildContext context) {
-    var sareeProvider = Provider.of<SareesChanger?>(context);
     return Scaffold(
-      body: Column(
-        children: [
-          if (sareeProvider == null) CircularProgressIndicator(),
-          if (sareeProvider!.sarees.isEmpty)
-            if (sareeProvider.sarees.isNotEmpty)
-              Expanded(
-                child: ListView.builder(
-                  itemBuilder: (ctx, index) {
-                    return ListTile(
-                      title: Column(
-                        children: [
-                          Text(
-                            sareeProvider.sarees[index]!.title,
-                            style: TextStyle(color:Colors.black),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                  itemCount: sareeProvider.sarees.length,
-                ),
-              ),
-        ],
-      ),
       appBar: AppBar(
-        title: Text(sareeProvider.sarees[0]!.title,),
+        title: Text(widget.saree!.title),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.file(
+              File(widget.saree!.imageUrl),
+            ),
+          ),
+          Text(
+            "Total Prices : " +
+                (widget.saree!.size + widget.saree!.price).toString(),
+          ),
+        ],
       ),
     );
   }
