@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:ama/modal/sarees.dart';
 import 'package:ama/modal/sareeschanger.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
       imagePickedFromFile = true;
     });
   }
+  
 
 //EXAMPLE
   // _imgFromCamera() async {
@@ -98,17 +100,6 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
 
   DateTime selectedDate = DateTime.now();
 
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate)
-      setState(() {
-        selectedDate = picked;
-      });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +120,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 height: 200,
                 width: 200,
                 child: imagePickedFromFile
-                    ? Image.asset(imagePicker!.path)
+                    ? Image.file(File(imagePicker!.path))
                     : Center(
                         child: Icon(
                           Icons.camera,
@@ -202,9 +193,12 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 height: 20,
               ),
               TextFormField(
+                keyboardType: TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
                 decoration: InputDecoration(
-                  labelText: "Size",
-                  hintText: "Enter Size of sarees",
+                  labelText: "Quantity",
+                  hintText: "Enter Quantity of sarees",
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {

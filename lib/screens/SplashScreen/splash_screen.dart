@@ -1,9 +1,5 @@
 import 'dart:async';
-
-import 'package:ama/modal/sareeschanger.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import '../../resources/routes.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -25,13 +21,56 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
-      child: ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: Image.asset(
-          'assets/images/as1.jpg',
-          scale: 10,
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Container(
+        color: Colors.green,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CircleAvatar(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ClipOval(
+                  child: Image.asset(
+                    'assets/images/as1.jpg',
+                    fit: BoxFit.cover,
+                    width: 400,
+                    height: 400,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ClipOval(
+                      child: Image.asset(
+                        'assets/images/as1.jpg',
+                        fit: BoxFit.cover,
+                        width: 100,
+                        height: 100,
+                      ),
+                    ),
+                    ClipOval(
+                      child: Image.asset(
+                        'assets/images/as1.jpg',
+                        fit: BoxFit.cover,
+                        width: 30,
+                        height: 30,
+                      ),
+                    ),
+                  ],
+                ),
+                ClipOval(
+                  child: Image.asset(
+                    'assets/images/as1.jpg',
+                    fit: BoxFit.cover,
+                    width: 50,
+                    height: 50,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
