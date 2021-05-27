@@ -1,13 +1,10 @@
 import 'package:ama/resources/routes.dart';
-import 'package:ama/screens/BottomNavigationBar/chat_screen.dart';
-import 'package:ama/screens/BottomNavigationBar/employee_screen.dart';
 import 'package:ama/screens/drawer.dart';
-import 'package:ama/screens/BottomNavigationBar/home.dart';
 import 'package:ama/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'BottomNavigationBar/calculator.dart';
 import 'addsaree.dart';
+import 'screens.dart' show HomePage, EmployeesData, ChatScreen, Calculator;
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -74,14 +71,13 @@ class _MyHomePageState extends State<MyHomePage> {
               Icons.add, // search button
             ),
             onPressed: () {
-               Navigator.of(context).push(
+              Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => AddSareeScreen(),
                 ),
               );
             },
           ),
-          
         ],
       ),
       drawer: DrawerItem(),

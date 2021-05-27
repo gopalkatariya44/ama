@@ -1,22 +1,31 @@
 import 'dart:io';
-import 'package:ama/modal/sarees.dart';
-import 'package:ama/modal/sareeschanger.dart';
+import 'dart:typed_data';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:ama/modal/sarees.dart';
+import 'package:ama/modal/sareeschanger.dart';
 
 class AddSareeScreen extends StatefulWidget {
   @override
   _AddSareeScreenState createState() => _AddSareeScreenState();
 }
 
+enum imageInputType {
+  camera,
+  gallery,
+}
+
 class _AddSareeScreenState extends State<AddSareeScreen> {
+  imageInputType value = imageInputType.camera;
   late SareesChanger? sareesChanger;
   String? title;
   double? price;
   String? imageUrl;
   double? size;
   String? description;
+  Uint8List? networkFile;
 
   final key = GlobalKey<FormState>();
   PickedFile? imagePicker;
@@ -24,14 +33,60 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
   final picker = ImagePicker();
 
   void startImagePicker() async {
-    imagePicker = await picker.getImage(
-      source: ImageSource.gallery,
-      imageQuality: 7,
-    );
+    if (!kIsWeb) {
+      await showDialog(
+          context: context,
+          builder: (ctx) {
+            return Dialog(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      value = imageInputType.camera;
+                      Navigator.of(context, rootNavigator: true).pop();
+                    },
+                    child: Text("Camera".toUpperCase()),
+                  ),
+                  Divider(),
+                  TextButton(
+                    onPressed: () {
+                      value = imageInputType.gallery;
+                      Navigator.of(context, rootNavigator: true).pop();
+                    },
+                    child: Text("Gallery".toUpperCase()),
+                  ),
+                ],
+              ),
+            );
+          });
+    }
+    switch (value) {
+      case imageInputType.camera:
+        imagePicker = await picker.getImage(
+          source: ImageSource.camera,
+          imageQuality: 7,
+        );
+        break;
+      case imageInputType.gallery:
+        imagePicker = await picker.getImage(
+          source: ImageSource.gallery,
+          imageQuality: 7,
+        );
+        break;
+      default:
+        imagePicker = await picker.getImage(
+          source: ImageSource.gallery,
+          imageQuality: 7,
+        );
+    }
 
-    setState(() {
-      imagePickedFromFile = true;
-    });
+    if (imagePicker != null) {
+      if (kIsWeb) networkFile = await imagePicker!.readAsBytes();
+      setState(() {
+        imagePickedFromFile = true;
+      });
+    }
   }
 
 //EXAMPLE
@@ -118,7 +173,9 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 height: 200,
                 width: 200,
                 child: imagePickedFromFile
-                    ? Image.file(File(imagePicker!.path))
+                    ? kIsWeb
+                        ? Image.memory(networkFile!)
+                        : Image.file(File(imagePicker!.path))
                     : Center(
                         child: Icon(
                           Icons.camera,
@@ -213,7 +270,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 height: 20,
               ),
               TextField(
-                 decoration: InputDecoration(
+                decoration: InputDecoration(
                   labelText: "Pick date",
                   hintText: "Enter Date here",
                   border: OutlineInputBorder(),

@@ -1,6 +1,6 @@
-import 'package:ama/modal/sarees.dart';
 import 'package:ama/modal/sareeschanger.dart';
 import 'package:ama/screens/item_details.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -10,15 +10,20 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var sareeProvider = Provider.of<SareesChanger?>(context);
+    if (sareeProvider!.sarees.isEmpty)
+      return Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Center(
+          child: Text("No Sarees please add some"),
+        ),
+      );
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
+      child: ListView(
+        physics: BouncingScrollPhysics(),
         children: [
           if (sareeProvider == null) CircularProgressIndicator(),
-          if (sareeProvider!.sarees.isEmpty)
-            Container(
-              child: Center(child: Text("No Sarees please add some")),
-            ),
           if (sareeProvider.sarees.isNotEmpty)
             Expanded(
               child: ListView.builder(
@@ -27,12 +32,15 @@ class HomePage extends StatelessWidget {
                     leading: GestureDetector(
                       child: CircleAvatar(
                         child: ClipOval(
-                          child: Image.file(
-                            File(sareeProvider.sarees[index]!.imageUrl),
-                            width: 150,
-                            height: 150,
-                            fit: BoxFit.cover,
-                          ),
+                          child: kIsWeb
+                              ? Image.network(
+                                  sareeProvider.sarees[index]!.imageUrl)
+                              : Image.file(
+                                  File(sareeProvider.sarees[index]!.imageUrl),
+                                  width: 150,
+                                  height: 150,
+                                  fit: BoxFit.cover,
+                                ),
                         ),
                       ),
                       onTap: () {
@@ -88,7 +96,9 @@ class HomePage extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ItemDetails(saree: sareeProvider.sarees[index],),
+                          builder: (context) => ItemDetails(
+                            saree: sareeProvider.sarees[index],
+                          ),
                         ),
                       );
                     },

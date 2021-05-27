@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:ama/modal/sarees.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -25,9 +26,11 @@ class _ItemDetailsState extends State<ItemDetails> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image.file(
-              File(widget.saree!.imageUrl),
-            ),
+            child: kIsWeb
+                ? Image.network(widget.saree!.imageUrl)
+                : Image.file(
+                    File(widget.saree!.imageUrl),
+                  ),
           ),
           Text(
             "Total Prices : " +
