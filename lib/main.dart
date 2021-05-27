@@ -1,11 +1,11 @@
+import 'package:ama/ama_theme.dart';
 import 'package:ama/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './modal/sareeschanger.dart';
 import './resources/routes.dart';
-import './screens/screens.dart' show SplashScreen;
-import './screens/notifications_screen.dart';
+import './screens/screens.dart' show SplashScreen, NotificationsScreen;
 
 void main() {
   runApp(MyApp());
@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Manager',
-        theme: ThemeData(
-          primarySwatch: Colors.green,
-        ),
+        themeMode: ThemeMode.system,
+        theme: AmaThemeData.lightThemeData,
+        darkTheme: AmaThemeData.darkThemeData,
         home: SplashScreen(),
         routes: {
           Routes.homeScreen: (context) => MyHomePage(),
