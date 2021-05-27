@@ -33,33 +33,34 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
   final picker = ImagePicker();
 
   void startImagePicker() async {
-    await showDialog(
-        context: context,
-        builder: (ctx) {
-          return Dialog(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    value = imageInputType.camera;
-                    Navigator.of(context, rootNavigator: true).pop();
-                  },
-                  child: Text("Camera".toUpperCase()),
-                ),
-                Divider(),
-                TextButton(
-                  onPressed: () {
-                    value = imageInputType.gallery;
-                    Navigator.of(context, rootNavigator: true).pop();
-                  },
-                  child: Text("Gallery".toUpperCase()),
-                ),
-              ],
-            ),
-          );
-        });
-
+    if (!kIsWeb) {
+      await showDialog(
+          context: context,
+          builder: (ctx) {
+            return Dialog(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      value = imageInputType.camera;
+                      Navigator.of(context, rootNavigator: true).pop();
+                    },
+                    child: Text("Camera".toUpperCase()),
+                  ),
+                  Divider(),
+                  TextButton(
+                    onPressed: () {
+                      value = imageInputType.gallery;
+                      Navigator.of(context, rootNavigator: true).pop();
+                    },
+                    child: Text("Gallery".toUpperCase()),
+                  ),
+                ],
+              ),
+            );
+          });
+    }
     switch (value) {
       case imageInputType.camera:
         imagePicker = await picker.getImage(
@@ -74,6 +75,10 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
         );
         break;
       default:
+        imagePicker = await picker.getImage(
+          source: ImageSource.gallery,
+          imageQuality: 7,
+        );
     }
 
     if (imagePicker != null) {
