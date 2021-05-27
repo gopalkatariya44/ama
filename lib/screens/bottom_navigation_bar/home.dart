@@ -12,7 +12,8 @@ class HomePage extends StatelessWidget {
     var sareeProvider = Provider.of<SareesChanger?>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
+      child: ListView(
+        physics: BouncingScrollPhysics(),
         children: [
           if (sareeProvider == null) CircularProgressIndicator(),
           if (sareeProvider!.sarees.isEmpty)

@@ -19,6 +19,7 @@ class AmaThemeData {
       // Matches manifest.json colors and background color.
       primaryColor: const Color(0xFF030303),
       appBarTheme: AppBarTheme(
+
         textTheme: _textTheme.apply(bodyColor: colorScheme.onPrimary),
         color: colorScheme.background,
         elevation: 0,

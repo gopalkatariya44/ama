@@ -12,7 +12,13 @@ class AddSareeScreen extends StatefulWidget {
   _AddSareeScreenState createState() => _AddSareeScreenState();
 }
 
+enum imageInputType {
+  camera,
+  gallery,
+}
+
 class _AddSareeScreenState extends State<AddSareeScreen> {
+  late imageInputType value;
   late SareesChanger? sareesChanger;
   String? title;
   double? price;
@@ -27,10 +33,49 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
   final picker = ImagePicker();
 
   void startImagePicker() async {
-    imagePicker = await picker.getImage(
-      source: ImageSource.gallery,
-      imageQuality: 7,
-    );
+    await showDialog(
+        context: context,
+        builder: (ctx) {
+          return Dialog(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    value = imageInputType.camera;
+                    Navigator.of(context, rootNavigator: true).pop();
+                  },
+                  child: Text("Camera".toUpperCase()),
+                ),
+                Divider(),
+                TextButton(
+                  onPressed: () {
+                    value = imageInputType.gallery;
+                    Navigator.of(context, rootNavigator: true).pop();
+                  },
+                  child: Text("Gallery".toUpperCase()),
+                ),
+              ],
+            ),
+          );
+        });
+
+    switch (value) {
+      case imageInputType.camera:
+        imagePicker = await picker.getImage(
+          source: ImageSource.camera,
+          imageQuality: 7,
+        );
+        break;
+      case imageInputType.gallery:
+        imagePicker = await picker.getImage(
+          source: ImageSource.gallery,
+          imageQuality: 7,
+        );
+        break;
+      default:
+    }
+
     if (imagePicker != null) {
       if (kIsWeb) networkFile = await imagePicker!.readAsBytes();
       setState(() {
