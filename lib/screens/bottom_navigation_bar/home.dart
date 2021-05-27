@@ -1,5 +1,6 @@
 import 'package:ama/modal/sareeschanger.dart';
 import 'package:ama/screens/item_details.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -26,12 +27,15 @@ class HomePage extends StatelessWidget {
                     leading: GestureDetector(
                       child: CircleAvatar(
                         child: ClipOval(
-                          child: Image.file(
-                            File(sareeProvider.sarees[index]!.imageUrl),
-                            width: 150,
-                            height: 150,
-                            fit: BoxFit.cover,
-                          ),
+                          child: kIsWeb
+                              ? Image.network(
+                                  sareeProvider.sarees[index]!.imageUrl)
+                              : Image.file(
+                                  File(sareeProvider.sarees[index]!.imageUrl),
+                                  width: 150,
+                                  height: 150,
+                                  fit: BoxFit.cover,
+                                ),
                         ),
                       ),
                       onTap: () {

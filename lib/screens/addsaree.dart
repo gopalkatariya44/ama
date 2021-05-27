@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'dart:typed_data';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +19,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
   String? imageUrl;
   double? size;
   String? description;
+  Uint8List? networkFile;
 
   final key = GlobalKey<FormState>();
   PickedFile? imagePicker;
@@ -28,10 +31,12 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
       source: ImageSource.gallery,
       imageQuality: 7,
     );
-    if (imagePicker != null)
+    if (imagePicker != null) {
+      if (kIsWeb) networkFile = await imagePicker!.readAsBytes();
       setState(() {
         imagePickedFromFile = true;
       });
+    }
   }
 
 //EXAMPLE
@@ -118,7 +123,9 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 height: 200,
                 width: 200,
                 child: imagePickedFromFile
-                    ? Image.file(File(imagePicker!.path))
+                    ? kIsWeb
+                        ? Image.memory(networkFile!)
+                        : Image.file(File(imagePicker!.path))
                     : Center(
                         child: Icon(
                           Icons.camera,
