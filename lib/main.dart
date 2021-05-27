@@ -1,10 +1,11 @@
-import 'package:ama/screens/home_screen%20.dart';
+import 'package:ama/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'modal/sareeschanger.dart';
-import 'resources/routes.dart';
-import '../screens/SplashScreen/splash_screen.dart';
-import '../screens/notifications_screen.dart';
+
+import './modal/sareeschanger.dart';
+import './resources/routes.dart';
+import './screens/screens.dart' show SplashScreen;
+import './screens/notifications_screen.dart';
 
 void main() {
   runApp(MyApp());

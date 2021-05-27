@@ -1,9 +1,9 @@
 import 'dart:io';
-import 'package:ama/modal/sarees.dart';
-import 'package:ama/modal/sareeschanger.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:ama/modal/sarees.dart';
+import 'package:ama/modal/sareeschanger.dart';
 
 class AddSareeScreen extends StatefulWidget {
   @override
@@ -28,10 +28,10 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
       source: ImageSource.gallery,
       imageQuality: 7,
     );
-
-    setState(() {
-      imagePickedFromFile = true;
-    });
+    if (imagePicker != null)
+      setState(() {
+        imagePickedFromFile = true;
+      });
   }
 
 //EXAMPLE
@@ -213,7 +213,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 height: 20,
               ),
               TextField(
-                 decoration: InputDecoration(
+                decoration: InputDecoration(
                   labelText: "Pick date",
                   hintText: "Enter Date here",
                   border: OutlineInputBorder(),
