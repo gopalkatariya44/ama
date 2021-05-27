@@ -10,16 +10,20 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var sareeProvider = Provider.of<SareesChanger?>(context);
+    if (sareeProvider!.sarees.isEmpty)
+      return Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Center(
+          child: Text("No Sarees please add some"),
+        ),
+      );
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListView(
         physics: BouncingScrollPhysics(),
         children: [
           if (sareeProvider == null) CircularProgressIndicator(),
-          if (sareeProvider!.sarees.isEmpty)
-            Container(
-              child: Center(child: Text("No Sarees please add some")),
-            ),
           if (sareeProvider.sarees.isNotEmpty)
             Expanded(
               child: ListView.builder(
