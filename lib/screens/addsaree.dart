@@ -18,7 +18,7 @@ enum imageInputType {
 }
 
 class _AddSareeScreenState extends State<AddSareeScreen> {
-  late imageInputType value;
+  imageInputType value = imageInputType.camera;
   late SareesChanger? sareesChanger;
   String? title;
   double? price;
