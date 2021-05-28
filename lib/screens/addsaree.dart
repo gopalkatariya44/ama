@@ -6,6 +6,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:ama/modal/sarees.dart';
 import 'package:ama/modal/sareeschanger.dart';
+import 'package:intl/intl.dart';
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+
 
 class AddSareeScreen extends StatefulWidget {
   @override
@@ -26,8 +29,10 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
   double? size;
   String? description;
   Uint8List? networkFile;
-
+  DateTime? date;
+  final format = DateFormat("yyyy-MM-dd");
   final key = GlobalKey<FormState>();
+
   PickedFile? imagePicker;
   bool imagePickedFromFile = false, imagePickedFromWeb = false;
   final picker = ImagePicker();
@@ -46,7 +51,6 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                       value = imageInputType.camera;
                       Navigator.of(context, rootNavigator: true).pop();
                     },
-                    
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -104,26 +108,6 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
     }
   }
 
-//EXAMPLE
-  // _imgFromCamera() async {
-  //   File image = await ImagePicker.pickImage(
-  //       source: ImageSource.camera, imageQuality: 50);
-
-  //   setState(() {
-  //     _image = image;
-  //   });
-  // }
-
-  // _imgFromGallery() async {
-  //   File image = await ImagePicker.pickImage(
-  //       source: ImageSource.gallery, imageQuality: 50);
-
-  //   setState(() {
-  //     _image = image;
-  //   });
-  // }
-
-//EXAMPLE
 
   void onSave() async {
     if (key.currentState!.validate()) {
@@ -139,6 +123,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
               onPressed: () async {
                 sareesChanger!.addSaree(
                   new Sarees(
+                    date: date!,
                     description: description!,
                     imageUrl: imagePicker!.path,
                     price: price!,
@@ -285,13 +270,41 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
               const SizedBox(
                 height: 20,
               ),
-              TextField(
+              DateTimeField(
                 decoration: InputDecoration(
-                  labelText: "Pick date",
-                  hintText: "Enter Date here",
+                  labelText: "Date",
                   border: OutlineInputBorder(),
+                  hintText: "Enter date",
                 ),
-              ),
+                format: format,
+                onShowPicker: (context, currentValue) {
+                  return showDatePicker(
+                      context: context,
+                      firstDate: DateTime(1900),
+                      initialDate: currentValue ?? DateTime.now(),
+                      lastDate: DateTime(2100));
+                },
+                onSaved: (value) {
+                  date = value!;
+                },
+              ), // TextField(
+              //   decoration: InputDecoration(
+              //     labelText: "Pick date",
+              //     hintText: "Enter Date here",
+              //     border: OutlineInputBorder(),
+              //     suffix: GestureDetector(
+              //       child: Icon(Icons.date_range),
+              //       onTap: () {
+              //         showDatePicker(
+              //           context: context,
+              //           initialDate: DateTime.now(),
+              //           firstDate: DateTime(2015, 8),
+              //           lastDate: DateTime(2101),
+              //         );
+              //       },
+              //     ),
+              //   ),
+              // ),
               const SizedBox(
                 height: 20,
               ),
@@ -327,7 +340,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                     ),
                     onPressed: () => onSave(),
                     child: Text(
-                      "Add Saree",
+                      "Add Saree lote",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 20,

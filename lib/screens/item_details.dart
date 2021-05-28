@@ -38,6 +38,8 @@ class _ItemDetailsState extends State<ItemDetails> {
                       ),
               ),
             ),
+            Divider(),
+            SizedBox(height: 20),
             Container(
               width: MediaQuery.of(context).size.width,
               child: Padding(
@@ -73,6 +75,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                         ),
                       ],
                     ),
+                    Divider(),
                     SizedBox(height: 20),
                     Container(
                       child: Column(
@@ -95,6 +98,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                         ],
                       ),
                     ),
+                    Divider(),
                     SizedBox(height: 20),
                     Container(
                       child: Column(

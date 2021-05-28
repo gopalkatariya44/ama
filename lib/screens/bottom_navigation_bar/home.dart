@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'dart:io';
 
+import '../addsaree.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,8 +16,24 @@ class HomePage extends StatelessWidget {
       return Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        child: Center(
-          child: Text("No Sarees please add some"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("No Sarees please add some"),
+            GestureDetector(
+              child: Icon(
+                Icons.add,
+                size: 50,
+              ),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => AddSareeScreen(),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
       );
     return Padding(
@@ -33,16 +51,16 @@ class HomePage extends StatelessWidget {
                     child: ListTile(
                       leading: GestureDetector(
                         child: ClipOval(
-                            child: kIsWeb
-                                ? Image.network(
-                                    sareeProvider.sarees[index]!.imageUrl)
-                                : Image.file(
-                                    File(sareeProvider.sarees[index]!.imageUrl),
-                                    height: 50,
-                                    width: 50,
-                                    fit: BoxFit.cover,
-                                  ),
-                          ),
+                          child: kIsWeb
+                              ? Image.network(
+                                  sareeProvider.sarees[index]!.imageUrl)
+                              : Image.file(
+                                  File(sareeProvider.sarees[index]!.imageUrl),
+                                  height: 50,
+                                  width: 50,
+                                  fit: BoxFit.cover,
+                                ),
+                        ),
                         onTap: () {
                           AwesomeDialog(
                               dialogType: DialogType.NO_HEADER,
@@ -70,12 +88,12 @@ class HomePage extends StatelessWidget {
                       ),
                       title: Text(
                         sareeProvider.sarees[index]!.title,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 17),
                       ),
                       subtitle: Row(
                         children: [
-                          Text("Date", style: TextStyle(fontSize: 17)),
+                          Text(
+                            sareeProvider.sarees[index]!.date.toString(),
+                          ),
                         ],
                       ),
                       trailing: Column(
