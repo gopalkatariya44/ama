@@ -21,22 +21,86 @@ class _ItemDetailsState extends State<ItemDetails> {
       appBar: AppBar(
         title: Text(widget.saree!.title),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: kIsWeb
-                ? Image.network(widget.saree!.imageUrl)
-                : Image.file(
-                    File(widget.saree!.imageUrl),
-                  ),
-          ),
-          Text(
-            "Total Prices : " +
-                (widget.saree!.size + widget.saree!.price).toString(),
-          ),
-        ],
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 400,
+              width: MediaQuery.of(context).size.width,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: kIsWeb
+                    ? Image.network(widget.saree!.imageUrl)
+                    : Image.file(
+                        File(widget.saree!.imageUrl),
+                      ),
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Quantity",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text(widget.saree!.size.toString()),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 100),
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Prices",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text("\u{20B9} " + widget.saree!.price.toString()),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Total Prices",
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          Text(widget.saree!.size.toString() + " x "+ widget.saree!.price.toString()+" = "+"\u{20B9} " +(widget.saree!.size * widget.saree!.price)
+                              .toString()),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Description",
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          Text(widget.saree!.description.toString()),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

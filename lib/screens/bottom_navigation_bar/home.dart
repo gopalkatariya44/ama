@@ -29,9 +29,8 @@ class HomePage extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 itemBuilder: (ctx, index) {
                   return Card(
-                
                     elevation: 10,
-                                      child: ListTile(
+                    child: ListTile(
                       leading: GestureDetector(
                         child: ClipOval(
                           child: kIsWeb
@@ -64,15 +63,12 @@ class HomePage extends StatelessWidget {
                       ),
                       title: Text(
                         sareeProvider.sarees[index]!.title,
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 17),
                       ),
                       subtitle: Row(
                         children: [
-                          Text(
-                            sareeProvider.sarees[index]!.description.toString(),
-                            style: TextStyle(fontSize: 17),
-                          ),
+                          Text("Date", style: TextStyle(fontSize: 17)),
                         ],
                       ),
                       trailing: Column(
@@ -108,9 +104,7 @@ class HomePage extends StatelessWidget {
                 },
                 itemCount: sareeProvider.sarees.length,
               ),
-            
             ),
-        
         ],
       ),
     );
