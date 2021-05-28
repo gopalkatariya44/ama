@@ -3,10 +3,10 @@ class Sarees {
   double price;
   String imageUrl;
   double size;
-  String description;
+  String? description;
 
   Sarees({
-    required this.description,
+    this.description,
     required this.imageUrl,
     required this.price,
     required this.size,

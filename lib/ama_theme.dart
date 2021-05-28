@@ -43,7 +43,7 @@ class AmaThemeData {
   }
 
   static const ColorScheme lightColorScheme = ColorScheme(
-    primary: Color(0xFFB93C5D),
+    primary: Color(0xFF4CAF50),
     primaryVariant: Color(0xFF117378),
     secondary: Color(0xFFEFF3F3),
     secondaryVariant: Color(0xFFFAFBFB),
@@ -59,7 +59,7 @@ class AmaThemeData {
   );
 
   static const ColorScheme darkColorScheme = ColorScheme(
-    primary: Color(0xFFFF8383),
+    primary: Color(0xFF4CAF50),
     primaryVariant: Color(0xFF1CDEC9),
     secondary: Color(0xFF4D1F7C),
     secondaryVariant: Color(0xFF451B6F),

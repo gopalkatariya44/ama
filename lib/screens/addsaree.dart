@@ -301,12 +301,12 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                   hintText: "Enter Description here",
                   border: OutlineInputBorder(),
                 ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Enter the description";
-                  }
-                  return null;
-                },
+                // validator: (value) {
+                //   if (value!.isEmpty) {
+                //     return "Enter the description";
+                //   }
+                //   return null;
+                // },
                 onSaved: (value) {
                   description = value!;
                 },
