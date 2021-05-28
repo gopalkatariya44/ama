@@ -20,13 +20,13 @@ class HomePage extends StatelessWidget {
       );
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: ListView(
-        physics: BouncingScrollPhysics(),
+      child: Column(
         children: [
           if (sareeProvider == null) CircularProgressIndicator(),
           if (sareeProvider.sarees.isNotEmpty)
             Expanded(
               child: ListView.builder(
+                physics: BouncingScrollPhysics(),
                 itemBuilder: (ctx, index) {
                   return ListTile(
                     leading: GestureDetector(
