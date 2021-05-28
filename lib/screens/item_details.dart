@@ -66,7 +66,8 @@ class _ItemDetailsState extends State<ItemDetails> {
                               Text("Prices",
                                   style:
                                       TextStyle(fontWeight: FontWeight.bold)),
-                              Text("\u{20B9} " + widget.saree!.price.toString()),
+                              Text(
+                                  "\u{20B9} " + widget.saree!.price.toString()),
                             ],
                           ),
                         ),
@@ -79,8 +80,18 @@ class _ItemDetailsState extends State<ItemDetails> {
                         children: [
                           Text("Total Prices",
                               style: TextStyle(fontWeight: FontWeight.bold)),
-                          Text(widget.saree!.size.toString() + " x "+ widget.saree!.price.toString()+" = "+"\u{20B9} " +(widget.saree!.size * widget.saree!.price)
-                              .toString()),
+                          GestureDetector(
+                            child: Text("\u{20B9} " +
+                                (widget.saree!.size * widget.saree!.price)
+                                    .toString() +
+                                " (Quantity x Prices)"),
+                            onTap: () {
+                              Tooltip(
+                                  message: widget.saree!.size.toString() +
+                                      " x " +
+                                      widget.saree!.price.toString());
+                            },
+                          ),
                         ],
                       ),
                     ),

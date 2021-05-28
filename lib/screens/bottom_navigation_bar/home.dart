@@ -33,32 +33,39 @@ class HomePage extends StatelessWidget {
                     child: ListTile(
                       leading: GestureDetector(
                         child: ClipOval(
-                          child: kIsWeb
-                              ? Image.network(
-                                  sareeProvider.sarees[index]!.imageUrl)
-                              : Image.file(
-                                  File(sareeProvider.sarees[index]!.imageUrl),
-                                  height: 50,
-                                  width: 50,
-                                  fit: BoxFit.cover,
-                                ),
-                        ),
+                            child: kIsWeb
+                                ? Image.network(
+                                    sareeProvider.sarees[index]!.imageUrl)
+                                : Image.file(
+                                    File(sareeProvider.sarees[index]!.imageUrl),
+                                    height: 50,
+                                    width: 50,
+                                    fit: BoxFit.cover,
+                                  ),
+                          ),
                         onTap: () {
                           AwesomeDialog(
-                            dialogType: DialogType.NO_HEADER,
-                            headerAnimationLoop: false,
-                            context: context,
-                            body: Padding(
-                              padding: const EdgeInsets.fromLTRB(5, 0, 5, 12),
-                              child: Container(
-                                child: Image.file(
-                                  File(sareeProvider.sarees[index]!.imageUrl),
-                                  // cacheHeight: 350,
-                                  cacheWidth: 300,
+                              dialogType: DialogType.NO_HEADER,
+                              headerAnimationLoop: false,
+                              context: context,
+                              body: Padding(
+                                padding: const EdgeInsets.fromLTRB(5, 0, 5, 12),
+                                child: Container(
+                                  child: kIsWeb
+                                      ? Image.network(
+                                          sareeProvider.sarees[index]!.imageUrl)
+                                      : Image.file(
+                                          File(sareeProvider
+                                              .sarees[index]!.imageUrl),
+                                          // cacheHeight: 350,
+                                          cacheWidth: 300,
+                                          cacheHeight: 300,
+                                        ),
                                 ),
                               ),
-                            ),
-                          )..show();
+                              width: 500)
+                            ..show();
+                          Tooltip(message: "tap to show images Preview");
                         },
                       ),
                       title: Text(
@@ -98,6 +105,7 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                         );
+                        Tooltip(message: 'tap to Detail');
                       },
                     ),
                   );
