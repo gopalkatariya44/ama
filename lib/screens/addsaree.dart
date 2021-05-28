@@ -193,7 +193,8 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                         : Image.file(File(imagePicker!.path))
                     : Center(
                         child: Icon(
-                          Icons.camera,
+                          Icons.image,
+                          size: 150,
                         ),
                       ),
               ),
