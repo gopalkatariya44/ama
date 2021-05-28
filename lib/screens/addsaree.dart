@@ -46,7 +46,15 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                       value = imageInputType.camera;
                       Navigator.of(context, rootNavigator: true).pop();
                     },
-                    child: Text("Camera".toUpperCase()),
+                    
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.camera),
+                        SizedBox(width: 5),
+                        Text("Camera".toUpperCase()),
+                      ],
+                    ),
                   ),
                   Divider(),
                   TextButton(
@@ -54,7 +62,14 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                       value = imageInputType.gallery;
                       Navigator.of(context, rootNavigator: true).pop();
                     },
-                    child: Text("Gallery".toUpperCase()),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.image),
+                        SizedBox(width: 5),
+                        Text("Gallery".toUpperCase()),
+                      ],
+                    ),
                   ),
                 ],
               ),
