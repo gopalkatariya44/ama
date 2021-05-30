@@ -42,7 +42,6 @@ class _SettingScreenState extends State<SettingScreen> {
                   children: [
                     Container(
                       height: 60,
-                      color: Colors.white,
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Row(
@@ -73,7 +72,6 @@ class _SettingScreenState extends State<SettingScreen> {
                     GestureDetector(
                       child: Container(
                         height: 60,
-                        color: Colors.white,
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Row(
@@ -104,7 +102,6 @@ class _SettingScreenState extends State<SettingScreen> {
                     GestureDetector(
                       child: Container(
                         height: 60,
-                        color: Colors.white,
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Row(

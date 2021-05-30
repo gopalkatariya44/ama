@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import './modal/sareeschanger.dart';
 import './resources/routes.dart';
 import './screens/screens.dart'
-    show SplashScreen, NotificationsScreen, MyHomePage;
+    show MaterialsChanger, MyHomePage, NotificationsScreen, SplashScreen;
 import './ama_theme.dart';
 
 void main() {
@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<SareesChanger?>(
           create: (context) => SareesChanger(),
+        ),
+        ChangeNotifierProvider<MaterialsChanger?>(
+          create: (context) => MaterialsChanger(),
         ),
       ],
       child: MaterialApp(

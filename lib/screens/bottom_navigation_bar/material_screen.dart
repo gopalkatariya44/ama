@@ -1,25 +1,26 @@
-import 'package:ama/modal/sareeschanger.dart';
-import 'package:ama/screens/item_details.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import '../addmaterials.dart';
+import 'package:ama/modal/materialschanger.dart';
+import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'dart:io';
 
-import '../addsaree.dart';
 
-class HomePage extends StatelessWidget {
+
+
+class MaterialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var sareeProvider = Provider.of<SareesChanger?>(context);
-    if (sareeProvider!.sarees.isEmpty)
+    var materialProvider = Provider.of<MaterialsChanger?>(context);
+    if (materialProvider!.materials.isEmpty)
       return Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("No Sarees please add some"),
+            Text("No materials please add some"),
             GestureDetector(
               child: Icon(
                 Icons.add,
@@ -28,7 +29,7 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => AddSareeScreen(),
+                    builder: (context) => AddMaterialScreen(),
                   ),
                 );
               },
@@ -40,8 +41,8 @@ class HomePage extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          if (sareeProvider == null) CircularProgressIndicator(),
-          if (sareeProvider.sarees.isNotEmpty)
+          if (materialProvider == null) CircularProgressIndicator(),
+          if (materialProvider.materials.isNotEmpty)
             Expanded(
               child: ListView.builder(
                 physics: BouncingScrollPhysics(),
@@ -53,12 +54,13 @@ class HomePage extends StatelessWidget {
                         child: ClipOval(
                           child: kIsWeb
                               ? Image.network(
-                                  sareeProvider.sarees[index]!.imageUrl,
+                                  materialProvider.materials[index]!.imageUrl,
                                   height: 50,
                                   width: 50,
                                   fit: BoxFit.cover)
                               : Image.file(
-                                  File(sareeProvider.sarees[index]!.imageUrl),
+                                  File(
+                                      materialProvider.materials[index]!.imageUrl),
                                   height: 50,
                                   width: 50,
                                   fit: BoxFit.cover,
@@ -73,11 +75,11 @@ class HomePage extends StatelessWidget {
                                 padding: const EdgeInsets.fromLTRB(5, 0, 5, 12),
                                 child: Container(
                                   child: kIsWeb
-                                      ? Image.network(
-                                          sareeProvider.sarees[index]!.imageUrl)
+                                      ? Image.network(materialProvider
+                                          .materials[index]!.imageUrl)
                                       : Image.file(
-                                          File(sareeProvider
-                                              .sarees[index]!.imageUrl),
+                                          File(materialProvider
+                                              .materials[index]!.imageUrl),
                                           // cacheHeight: 350,
                                           cacheWidth: 300,
                                           cacheHeight: 300,
@@ -90,12 +92,12 @@ class HomePage extends StatelessWidget {
                         },
                       ),
                       title: Text(
-                        sareeProvider.sarees[index]!.title,
+                        materialProvider.materials[index]!.title,
                       ),
                       subtitle: Row(
                         children: [
                           Text(
-                            sareeProvider.sarees[index]!.date.toString(),
+                            materialProvider.materials[index]!.date.toString(),
                           ),
                         ],
                       ),
@@ -105,7 +107,7 @@ class HomePage extends StatelessWidget {
                         children: [
                           Text(
                             "Qty: " +
-                                sareeProvider.sarees[index]!.size.toString(),
+                                materialProvider.materials[index]!.size.toString(),
                             style: TextStyle(color: Colors.red, fontSize: 15),
                           ),
                           SizedBox(
@@ -113,25 +115,17 @@ class HomePage extends StatelessWidget {
                           ),
                           Text(
                             "Rate: \u{20B9} " +
-                                sareeProvider.sarees[index]!.price.toString(),
+                                materialProvider.materials[index]!.price
+                                    .toString(),
                             style: TextStyle(color: Colors.green, fontSize: 15),
                           ),
                         ],
                       ),
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => ItemDetails(
-                              saree: sareeProvider.sarees[index],
-                            ),
-                          ),
-                        );
-                        Tooltip(message: 'tap to Detail');
-                      },
+                      onTap: () {},
                     ),
                   );
                 },
-                itemCount: sareeProvider.sarees.length,
+                itemCount: materialProvider.materials.length,
               ),
             ),
         ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-
 class ProfilePage extends StatefulWidget {
   @override
   MapScreenState createState() => MapScreenState();
@@ -24,14 +23,12 @@ class MapScreenState extends State<ProfilePage>
           title: Text("Profile"),
         ),
         body: Container(
-          color: Colors.white,
           child: ListView(
             children: <Widget>[
               Column(
                 children: <Widget>[
                   Container(
                     height: 250.0,
-                    color: Colors.white,
                     child: Column(
                       children: <Widget>[
                         Padding(
@@ -39,7 +36,6 @@ class MapScreenState extends State<ProfilePage>
                           child: Stack(
                             fit: StackFit.loose,
                             children: <Widget>[
-                              
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -58,21 +54,20 @@ class MapScreenState extends State<ProfilePage>
                                 ],
                               ),
                               Padding(
-                                  padding:
-                                      EdgeInsets.only(top: 90.0, right: 100.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      CircleAvatar(
-                                        backgroundColor: Colors.green,
-                                        radius: 25.0,
-                                        child: Icon(
-                                          Icons.camera_alt,
-                                          color: Colors.white,
-                                        ),
-                                      )
-                                    ],
-                                  ),),
+                                padding:
+                                    EdgeInsets.only(top: 90.0, right: 100.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    CircleAvatar(
+                                      radius: 25.0,
+                                      child: Icon(
+                                        Icons.camera_alt,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         )
@@ -80,8 +75,6 @@ class MapScreenState extends State<ProfilePage>
                     ),
                   ),
                   Container(
-                    
-                    color: Color(0xffFFFFFF),
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 25.0),
                       child: Column(
@@ -315,8 +308,6 @@ class MapScreenState extends State<ProfilePage>
               child: Container(
                   child: RaisedButton(
                 child: Text("Save"),
-                textColor: Colors.white,
-                color: Colors.green,
                 onPressed: () {
                   setState(() {
                     _status = true;
@@ -335,8 +326,6 @@ class MapScreenState extends State<ProfilePage>
               child: Container(
                   child: RaisedButton(
                 child: Text("Cancel"),
-                textColor: Colors.white,
-                color: Colors.green,
                 onPressed: () {
                   setState(() {
                     _status = true;
@@ -357,11 +346,9 @@ class MapScreenState extends State<ProfilePage>
   Widget _getEditIcon() {
     return GestureDetector(
       child: CircleAvatar(
-        backgroundColor: Colors.green,
         radius: 14.0,
         child: Icon(
           Icons.edit,
-          color: Colors.white,
           size: 16.0,
         ),
       ),

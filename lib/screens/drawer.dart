@@ -10,18 +10,17 @@ class DrawerItem extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.green,
-            ),
+            decoration: BoxDecoration(),
             child: GestureDetector(
               child: Row(
                 children: [
-                  Image.asset(
-                    'assets/images/as.png',
-                    fit: BoxFit.cover,
-                    cacheHeight: 40,
-                    cacheWidth: 40,
-                    width: 80,
+                  ClipOval(
+                    child: Image.asset(
+                      'assets/images/as.png',
+                      fit: BoxFit.cover,
+                      height: 80,
+                      width: 80,
+                    ),
                   ),
                   SizedBox(width: 20),
                   Column(
@@ -31,14 +30,12 @@ class DrawerItem extends StatelessWidget {
                       Text(
                         'Username',
                         style: TextStyle(
-                          color: Colors.white,
                           fontSize: 20,
                         ),
                       ),
                       Text(
                         'Status',
                         style: TextStyle(
-                          color: Colors.white,
                           fontSize: 10,
                         ),
                       ),

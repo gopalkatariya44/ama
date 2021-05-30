@@ -4,14 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:ama/modal/sarees.dart';
-import 'package:ama/modal/sareeschanger.dart';
+import 'package:ama/modal/materials.dart';
+import 'package:ama/modal/materialschanger.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 
-class AddSareeScreen extends StatefulWidget {
+class AddMaterialScreen extends StatefulWidget {
   @override
-  _AddSareeScreenState createState() => _AddSareeScreenState();
+  _AddMaterialScreenState createState() => _AddMaterialScreenState();
 }
 
 enum imageInputType {
@@ -19,9 +19,9 @@ enum imageInputType {
   gallery,
 }
 
-class _AddSareeScreenState extends State<AddSareeScreen> {
+class _AddMaterialScreenState extends State<AddMaterialScreen> {
   imageInputType value = imageInputType.camera;
-  late SareesChanger? sareesChanger;
+  late MaterialsChanger? materialsChanger;
   String? title;
   double? price;
   String? imageUrl;
@@ -116,12 +116,12 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
         context: context,
         builder: (ctx) => AlertDialog(
           title: Text("Confirm"),
-          content: Text("Are you sure you want to add the product"),
+          content: Text("Are you sure you want to add the Material"),
           actions: [
             TextButton(
               onPressed: () async {
-                sareesChanger!.addSaree(
-                  new Sarees(
+                materialsChanger!.addMaterial(
+                  new Materials(
                     date: date!,
                     description: description!,
                     imageUrl: imagePicker!.path,
@@ -155,10 +155,10 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    sareesChanger = Provider.of<SareesChanger?>(context);
+    materialsChanger = Provider.of<MaterialsChanger?>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Saree"),
+        title: Text("Add Material"),
         centerTitle: true,
       ),
       body: Container(
@@ -210,11 +210,11 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 decoration: InputDecoration(
                   labelText: "Name",
                   border: OutlineInputBorder(),
-                  hintText: "Enter Saree Name",
+                  hintText: "Enter Material Name",
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Please enter name of saree";
+                    return "Please enter name of Material";
                   }
                   return null;
                 },
@@ -231,12 +231,12 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 ),
                 decoration: InputDecoration(
                   labelText: "Price",
-                  hintText: "Enter Price of Saree",
+                  hintText: "Enter Price of Material",
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Please enter price of saree";
+                    return "Please enter price of Material";
                   }
                   return null;
                 },
@@ -253,12 +253,12 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 ),
                 decoration: InputDecoration(
                   labelText: "Quantity",
-                  hintText: "Enter Quantity of sarees",
+                  hintText: "Enter Quantity of Material",
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Please enter the Number of saree";
+                    return "Please enter the Number of Material";
                   }
                   return null;
                 },
@@ -286,24 +286,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 onSaved: (value) {
                   date = value!;
                 },
-              ), // TextField(
-              //   decoration: InputDecoration(
-              //     labelText: "Pick date",
-              //     hintText: "Enter Date here",
-              //     border: OutlineInputBorder(),
-              //     suffix: GestureDetector(
-              //       child: Icon(Icons.date_range),
-              //       onTap: () {
-              //         showDatePicker(
-              //           context: context,
-              //           initialDate: DateTime.now(),
-              //           firstDate: DateTime(2015, 8),
-              //           lastDate: DateTime(2101),
-              //         );
-              //       },
-              //     ),
-              //   ),
-              // ),
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -313,12 +296,6 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                   hintText: "Enter Description here",
                   border: OutlineInputBorder(),
                 ),
-                // validator: (value) {
-                //   if (value!.isEmpty) {
-                //     return "Enter the description";
-                //   }
-                //   return null;
-                // },
                 onSaved: (value) {
                   description = value!;
                 },
@@ -339,7 +316,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                     ),
                     onPressed: () => onSave(),
                     child: Text(
-                      "Add Saree lote",
+                      "Add Material",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 20,

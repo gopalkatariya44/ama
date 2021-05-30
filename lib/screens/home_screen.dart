@@ -4,7 +4,8 @@ import 'package:ama/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'addsaree.dart';
-import 'screens.dart' show HomePage, EmployeesData, ChatScreen, Calculator;
+import 'screens.dart'
+    show HomePage, EmployeesData, ChatScreen, Calculator, MaterialScreen;
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -25,6 +26,10 @@ class _MyHomePageState extends State<MyHomePage> {
     {
       'title': "Chats",
       'page': ChatScreen(),
+    },
+    {
+      'title': "Martials",
+      'page': MaterialScreen(),
     },
     {
       'title': "Calculator",
@@ -95,6 +100,10 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.message_outlined),
             label: 'Chat',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_mall_outlined),
+            label: 'Materials',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.calculate),

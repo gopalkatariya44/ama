@@ -18,7 +18,6 @@ class _EmployeesDataState extends State<EmployeesData> {
                 Card(
                   elevation: 10,
                                   child: Container(
-                    color: Colors.white,
                     height: 70,
                     width: double.infinity,
                     child: Padding(
@@ -42,7 +41,6 @@ class _EmployeesDataState extends State<EmployeesData> {
                                   Text(
                                     'Username',
                                     style: TextStyle(
-                                      color: Colors.black,
                                       fontSize: 17,
                                     ),
                                   ),
@@ -50,7 +48,6 @@ class _EmployeesDataState extends State<EmployeesData> {
                                   Text(
                                     'Description',
                                     style: TextStyle(
-                                      color: Colors.black,
                                       fontSize: 12,
                                     ),
                                   ),
@@ -70,7 +67,6 @@ class _EmployeesDataState extends State<EmployeesData> {
                 Card(
                   elevation: 10,
                                   child: Container(
-                    color: Colors.white,
                     width: double.infinity,
                     height: 70,
                     child: Padding(
@@ -94,7 +90,6 @@ class _EmployeesDataState extends State<EmployeesData> {
                                   Text(
                                     'Username',
                                     style: TextStyle(
-                                      color: Colors.black,
                                       fontSize: 17,
                                     ),
                                   ),
@@ -102,7 +97,6 @@ class _EmployeesDataState extends State<EmployeesData> {
                                   Text(
                                     'Description',
                                     style: TextStyle(
-                                      color: Colors.black,
                                       fontSize: 12,
                                     ),
                                   ),
