@@ -1,12 +1,12 @@
 import 'package:ama/modal/sareeschanger.dart';
-import 'package:ama/screens/item_details.dart';
+import 'package:ama/screens/bottom_navigation_bar/item_saree/item_details.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'dart:io';
 
-import '../addsaree.dart';
+import 'addsaree.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -36,6 +36,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       );
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -44,6 +45,7 @@ class HomePage extends StatelessWidget {
           if (sareeProvider.sarees.isNotEmpty)
             Expanded(
               child: ListView.builder(
+                itemCount: sareeProvider.sarees.length,
                 physics: BouncingScrollPhysics(),
                 itemBuilder: (ctx, index) {
                   return Card(
@@ -131,7 +133,6 @@ class HomePage extends StatelessWidget {
                     ),
                   );
                 },
-                itemCount: sareeProvider.sarees.length,
               ),
             ),
         ],

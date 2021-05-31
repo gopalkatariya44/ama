@@ -291,6 +291,7 @@ class _AddMaterialScreenState extends State<AddMaterialScreen> {
                 height: 20,
               ),
               TextFormField(
+                maxLines: 5,
                 decoration: InputDecoration(
                   labelText: "Description",
                   hintText: "Enter Description here",

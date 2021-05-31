@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../addmaterials.dart';
+import 'addmaterials.dart';
 import 'package:ama/modal/materialschanger.dart';
 import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';

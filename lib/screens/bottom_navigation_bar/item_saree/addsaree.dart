@@ -286,28 +286,12 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                 onSaved: (value) {
                   date = value!;
                 },
-              ), // TextField(
-              //   decoration: InputDecoration(
-              //     labelText: "Pick date",
-              //     hintText: "Enter Date here",
-              //     border: OutlineInputBorder(),
-              //     suffix: GestureDetector(
-              //       child: Icon(Icons.date_range),
-              //       onTap: () {
-              //         showDatePicker(
-              //           context: context,
-              //           initialDate: DateTime.now(),
-              //           firstDate: DateTime(2015, 8),
-              //           lastDate: DateTime(2101),
-              //         );
-              //       },
-              //     ),
-              //   ),
-              // ),
+              ),
               const SizedBox(
                 height: 20,
               ),
               TextFormField(
+                maxLines: 5,
                 decoration: InputDecoration(
                   labelText: "Description",
                   hintText: "Enter Description here",
