@@ -114,7 +114,7 @@ class HomePage extends StatelessWidget {
                             height: 3,
                           ),
                           Text(
-                            "Rate: \u{20B9} " +
+                            "Rs: \u{20B9} " +
                                 sareeProvider.sarees[index]!.price.toString(),
                             style: TextStyle(color: Colors.green, fontSize: 15),
                           ),

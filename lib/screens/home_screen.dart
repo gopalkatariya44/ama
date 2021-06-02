@@ -8,11 +8,14 @@ import 'screens.dart'
     show HomePage, EmployeesData, ChatScreen, Calculator, MaterialScreen;
 
 class MyHomePage extends StatefulWidget {
+
+  
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // bool isVisible = true;
   int _selectedIndex = 0;
   List<Map<String, dynamic>> _widgetOptions = [
     {
@@ -42,6 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
       _selectedIndex = index;
     });
   }
+  
+  
 
   @override
   Widget build(BuildContext context) {
@@ -60,17 +65,21 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             },
           ),
-          IconButton(
-            icon: Icon(
-              Icons.search, // search button
+          // Visibility(
+          //   visible: _selectedIndex == 4 ? isVisible = false : isVisible,
+              // child: 
+              IconButton(
+              icon: Icon(
+                Icons.search, // search button
+              ),
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: SearchBar(),
+                );
+              },
             ),
-            onPressed: () {
-              showSearch(
-                context: context,
-                delegate: SearchBar(),
-              );
-            },
-          ),
+          // ),
           IconButton(
             icon: Icon(
               Icons.add, // search button
@@ -78,7 +87,9 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => _selectedIndex==3?AddMaterialScreen():AddSareeScreen(),
+                  builder: (context) => _selectedIndex == 3
+                      ? AddMaterialScreen()
+                      : AddSareeScreen(),
                 ),
               );
             },

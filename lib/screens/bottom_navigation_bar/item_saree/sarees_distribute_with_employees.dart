@@ -1,9 +1,6 @@
-import 'package:ama/modal/sarees.dart';
 import 'package:flutter/material.dart';
 
-class SearchBar extends SearchDelegate {
-  Sarees? saree;
-  SearchBar({this.saree});
+class SareesDistributeWithEmployees extends SearchDelegate {
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
@@ -36,11 +33,8 @@ class SearchBar extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final suggestionList = query.isEmpty;
-    return ListView.builder(
-      itemBuilder: (context, index) => ListTile(
-        title: Text(saree!.title),
-      ),
+    return Container(
+      child: Text("hello........."),
     );
   }
 }

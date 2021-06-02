@@ -72,6 +72,7 @@ class AmaThemeData {
     onSecondary: _darkFillColor,
     onSurface: _darkFillColor,
     brightness: Brightness.dark,
+
   );
 
   static const _regular = FontWeight.w400;

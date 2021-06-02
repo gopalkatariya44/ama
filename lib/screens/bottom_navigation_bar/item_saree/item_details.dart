@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:ama/modal/sarees.dart';
+import 'package:ama/screens/bottom_navigation_bar/item_saree/sarees_distribute_with_employees.dart';
 import 'package:ama/screens/bottom_navigation_bar/item_saree/sarees_distributions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -50,31 +51,27 @@ class _ItemDetailsState extends State<ItemDetails> {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Quantity",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                                Text(widget.saree!.size.toString()),
-                              ],
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Quantity",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text(widget.saree!.size.toString()),
+                            ],
                           ),
                           SizedBox(
-                            width: 120,
+                            width: 30,
                           ),
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Prices",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                                Text("\u{20B9} " +
-                                    widget.saree!.price.toString()),
-                              ],
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Prices",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text(
+                                  "\u{20B9} " + widget.saree!.price.toString()),
+                            ],
                           ),
                         ],
                       ),
@@ -82,26 +79,24 @@ class _ItemDetailsState extends State<ItemDetails> {
                     Divider(),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Total Prices",
-                                style: TextStyle(fontWeight: FontWeight.bold)),
-                            GestureDetector(
-                              child: Text("\u{20B9} " +
-                                  (widget.saree!.size * widget.saree!.price)
-                                      .toString() +
-                                  " (Quantity x Prices)"),
-                              onTap: () {
-                                Tooltip(
-                                    message: widget.saree!.size.toString() +
-                                        " x " +
-                                        widget.saree!.price.toString());
-                              },
-                            ),
-                          ],
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Total Prices",
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          GestureDetector(
+                            child: Text("\u{20B9} " +
+                                (widget.saree!.size * widget.saree!.price)
+                                    .toString() +
+                                "  ( Quantity x Prices )"),
+                            onTap: () {
+                              Tooltip(
+                                  message: widget.saree!.size.toString() +
+                                      " x " +
+                                      widget.saree!.price.toString());
+                            },
+                          ),
+                        ],
                       ),
                     ),
                     Divider(),
@@ -118,12 +113,14 @@ class _ItemDetailsState extends State<ItemDetails> {
                         ),
                       ),
                     ),
-                    Divider(thickness: 3),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SareesDistribution(
-                        size: widget.saree!.size,
-                        prise: widget.saree!.price,
+                    Card(
+                      margin: EdgeInsets.all(0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: SareesDistribution(
+                          size: widget.saree!.size,
+                          prise: widget.saree!.price,
+                        ),
                       ),
                     ),
                   ],
@@ -132,6 +129,19 @@ class _ItemDetailsState extends State<ItemDetails> {
             ),
           ],
         ),
+      ),
+      //add Employee for Distributes saree
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showSearch(
+            context: context,
+            delegate: SareesDistributeWithEmployees(),
+          );
+        },
+        child: Icon(Icons.add),
+        mini: true,
+        tooltip: 'Distribute saree',
+        elevation: 5,
       ),
     );
   }
