@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1017002915202",
+    "project_id": "ama-app-fd29c",
+    "storage_bucket": "ama-app-fd29c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017002915202:android:8eb06142357582ad250b9b",
+        "android_client_info": {
+          "package_name": "com.sarees_management.ama"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017002915202-3kni0tuigt9f4d5sh2ja7futsf6eaqnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpQphn5xcPDBG-UYbwJhmqtNh0J3nlwfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017002915202-3kni0tuigt9f4d5sh2ja7futsf6eaqnc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
