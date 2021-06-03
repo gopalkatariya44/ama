@@ -17,8 +17,9 @@ class SareesChanger with ChangeNotifier {
   double actualProfit() {
     double profit = 0;
     sarees.forEach((saree) {
-      profit =profit+ (saree!.price*saree.size);
+      profit = profit + (saree!.price * saree.size);
     });
-  return profit;
+    return profit;
   }
+
 }

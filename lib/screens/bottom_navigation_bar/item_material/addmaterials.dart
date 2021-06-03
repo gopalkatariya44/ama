@@ -30,7 +30,7 @@ class _AddMaterialScreenState extends State<AddMaterialScreen> {
   Uint8List? networkFile;
   DateTime? date;
 
-  final format = DateFormat("yyyy-MM-dd");
+
   final key = GlobalKey<FormState>();
 
   PickedFile? imagePicker;
@@ -275,7 +275,7 @@ class _AddMaterialScreenState extends State<AddMaterialScreen> {
                   border: OutlineInputBorder(),
                   hintText: "Enter date",
                 ),
-                format: format,
+                format: DateFormat.yMMMd(),
                 onShowPicker: (context, currentValue) {
                   return showDatePicker(
                       context: context,

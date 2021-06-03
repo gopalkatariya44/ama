@@ -82,7 +82,10 @@ class Items extends StatelessWidget {
       background: Container(
         color: Colors.red,
         alignment: Alignment.centerRight,
-        child: Icon(Icons.delete),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.delete),
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4),

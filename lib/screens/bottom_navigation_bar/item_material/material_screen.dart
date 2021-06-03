@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'addmaterials.dart';
 import 'package:ama/modal/materials/materialschanger.dart';
 import 'package:flutter/foundation.dart';
@@ -6,10 +7,9 @@ import 'package:provider/provider.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'dart:io';
 
-
-
-
 class MaterialScreen extends StatelessWidget {
+  
+  
   @override
   Widget build(BuildContext context) {
     var materialProvider = Provider.of<MaterialsChanger?>(context);
@@ -50,10 +50,10 @@ class MaterialScreen extends StatelessWidget {
                   return Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(6)),
-                          gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [Color(0xFF241E30), Color(0xFF4D1F7C)])),
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [Color(0xFF241E30), Color(0xFF4D1F7C)])),
                     child: ListTile(
                       leading: GestureDetector(
                         child: ClipOval(
@@ -64,8 +64,8 @@ class MaterialScreen extends StatelessWidget {
                                   width: 50,
                                   fit: BoxFit.cover)
                               : Image.file(
-                                  File(
-                                      materialProvider.materials[index]!.imageUrl),
+                                  File(materialProvider
+                                      .materials[index]!.imageUrl),
                                   height: 50,
                                   width: 50,
                                   fit: BoxFit.cover,
@@ -102,7 +102,7 @@ class MaterialScreen extends StatelessWidget {
                       subtitle: Row(
                         children: [
                           Text(
-                            materialProvider.materials[index]!.date.toString(),
+                            DateFormat.yMMMd('en_IN').format(materialProvider.materials[index]!.date),
                           ),
                         ],
                       ),
@@ -112,7 +112,8 @@ class MaterialScreen extends StatelessWidget {
                         children: [
                           Text(
                             "Qty: " +
-                                materialProvider.materials[index]!.size.toString(),
+                                materialProvider.materials[index]!.size
+                                    .toString(),
                             style: TextStyle(color: Colors.red, fontSize: 15),
                           ),
                           SizedBox(

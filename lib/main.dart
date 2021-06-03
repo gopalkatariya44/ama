@@ -1,3 +1,5 @@
+import 'package:ama/modal/employees/employees.dart';
+import 'package:ama/modal/employees/employeeschanger.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +22,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<SareesChanger?>(
           create: (context) => SareesChanger(),
+        ),
+        ChangeNotifierProvider<Employeeschanger?>(
+          create: (context) => Employeeschanger(),
         ),
         ChangeNotifierProvider<MaterialsChanger?>(
           create: (context) => MaterialsChanger(),
