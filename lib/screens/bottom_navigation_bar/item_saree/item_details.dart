@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:ama/modal/sarees.dart';
+import 'package:ama/modal/sarees/sarees.dart';
 import 'package:ama/screens/bottom_navigation_bar/item_saree/sarees_distribute_with_employees.dart';
-import 'package:ama/screens/bottom_navigation_bar/item_saree/sarees_distributions.dart';
+import 'package:ama/screens/bottom_navigation_bar/item_saree/sarees_distribution.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -22,29 +22,27 @@ class _ItemDetailsState extends State<ItemDetails> {
       appBar: AppBar(
         title: Text(widget.saree!.title),
       ),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              height: 400,
-              width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: kIsWeb
-                    ? Image.network(widget.saree!.imageUrl)
-                    : Image.file(
-                        File(widget.saree!.imageUrl),
-                      ),
-              ),
-            ),
-            Divider(),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: kIsWeb
+                        ? Image.network(widget.saree!.imageUrl)
+                        : Image.file(
+                            File(widget.saree!.imageUrl),
+                          ),
+                  ),
+                ),
+                Divider(),
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
@@ -57,7 +55,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                               Text("Quantity",
                                   style:
                                       TextStyle(fontWeight: FontWeight.bold)),
-                              Text(widget.saree!.size.toString()),
+                              Text(widget.saree!.size.toString(),style: TextStyle(color: Colors.red)),
                             ],
                           ),
                           SizedBox(
@@ -70,7 +68,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                                   style:
                                       TextStyle(fontWeight: FontWeight.bold)),
                               Text(
-                                  "\u{20B9} " + widget.saree!.price.toString()),
+                                  "\u{20B9} " + widget.saree!.price.toString(),style: TextStyle(color: Colors.green)),
                             ],
                           ),
                         ],
@@ -88,7 +86,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                             child: Text("\u{20B9} " +
                                 (widget.saree!.size * widget.saree!.price)
                                     .toString() +
-                                "  ( Quantity x Prices )"),
+                                "  ( Quantity x Prices )",style: TextStyle(color: Colors.green)),
                             onTap: () {
                               Tooltip(
                                   message: widget.saree!.size.toString() +
@@ -113,7 +111,8 @@ class _ItemDetailsState extends State<ItemDetails> {
                         ),
                       ),
                     ),
-                    Card(
+                    Divider(),
+                    Container(
                       margin: EdgeInsets.all(0),
                       child: Padding(
                         padding: const EdgeInsets.all(5),
@@ -125,23 +124,10 @@ class _ItemDetailsState extends State<ItemDetails> {
                     ),
                   ],
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
-      //add Employee for Distributes saree
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showSearch(
-            context: context,
-            delegate: SareesDistributeWithEmployees(),
-          );
-        },
-        child: Icon(Icons.add),
-        mini: true,
-        tooltip: 'Distribute saree',
-        elevation: 5,
       ),
     );
   }

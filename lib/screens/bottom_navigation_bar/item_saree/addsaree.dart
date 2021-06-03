@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:ama/modal/sarees.dart';
-import 'package:ama/modal/sareeschanger.dart';
+import 'package:ama/modal/sarees/sarees.dart';
+import 'package:ama/modal/sarees/sareeschanger.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 
@@ -30,7 +30,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
   Uint8List? networkFile;
   DateTime? date;
 
-  final format = DateFormat("yyyy-MM-dd");
+  
   final key = GlobalKey<FormState>();
 
   PickedFile? imagePicker;
@@ -151,7 +151,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
     }
   }
 
-  DateTime selectedDate = DateTime.now();
+
 
   @override
   Widget build(BuildContext context) {
@@ -275,7 +275,7 @@ class _AddSareeScreenState extends State<AddSareeScreen> {
                   border: OutlineInputBorder(),
                   hintText: "Enter date",
                 ),
-                format: format,
+                format: DateFormat.yMMMd(),
                 onShowPicker: (context, currentValue) {
                   return showDatePicker(
                       context: context,

@@ -1,3 +1,4 @@
+import 'package:ama/screens/actual_profit.dart';
 import 'package:ama/screens/setting_screen.dart';
 import 'package:ama/screens/profile_page.dart';
 import 'package:flutter/material.dart';
@@ -66,13 +67,13 @@ class DrawerItem extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Profile'),
+            leading: Text("\u{20B9}",style: TextStyle(fontSize: 28),),
+            title: Text('Actual Profit'),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ProfilePage(),
+                  builder: (context) => ActualProfit(),
                 ),
               );
             },

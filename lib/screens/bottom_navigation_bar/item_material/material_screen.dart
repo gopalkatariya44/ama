@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'addmaterials.dart';
-import 'package:ama/modal/materialschanger.dart';
+import 'package:ama/modal/materials/materialschanger.dart';
 import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -47,8 +47,13 @@ class MaterialScreen extends StatelessWidget {
               child: ListView.builder(
                 physics: BouncingScrollPhysics(),
                 itemBuilder: (ctx, index) {
-                  return Card(
-                    elevation: 10,
+                  return Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(6)),
+                          gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [Color(0xFF241E30), Color(0xFF4D1F7C)])),
                     child: ListTile(
                       leading: GestureDetector(
                         child: ClipOval(

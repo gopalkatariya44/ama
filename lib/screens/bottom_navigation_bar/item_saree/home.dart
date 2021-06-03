@@ -1,7 +1,8 @@
-import 'package:ama/modal/sareeschanger.dart';
+import 'package:ama/modal/sarees/sareeschanger.dart';
 import 'package:ama/screens/bottom_navigation_bar/item_saree/item_details.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'dart:io';
@@ -48,94 +49,125 @@ class HomePage extends StatelessWidget {
                 itemCount: sareeProvider.sarees.length,
                 physics: BouncingScrollPhysics(),
                 itemBuilder: (ctx, index) {
-                  return Card(
-                    elevation: 10,
-                    child: ListTile(
-                      leading: GestureDetector(
-                        child: ClipOval(
-                          child: kIsWeb
-                              ? Image.network(
-                                  sareeProvider.sarees[index]!.imageUrl,
-                                  height: 50,
-                                  width: 50,
-                                  fit: BoxFit.cover)
-                              : Image.file(
-                                  File(sareeProvider.sarees[index]!.imageUrl),
-                                  height: 50,
-                                  width: 50,
-                                  fit: BoxFit.cover,
-                                ),
-                        ),
-                        onTap: () {
-                          AwesomeDialog(
-                              dialogType: DialogType.NO_HEADER,
-                              headerAnimationLoop: false,
-                              context: context,
-                              body: Padding(
-                                padding: const EdgeInsets.fromLTRB(5, 0, 5, 12),
-                                child: Container(
-                                  child: kIsWeb
-                                      ? Image.network(
-                                          sareeProvider.sarees[index]!.imageUrl)
-                                      : Image.file(
-                                          File(sareeProvider
-                                              .sarees[index]!.imageUrl),
-                                          // cacheHeight: 350,
-                                          cacheWidth: 300,
-                                          cacheHeight: 300,
-                                        ),
-                                ),
-                              ),
-                              width: 500)
-                            ..show();
-                          Tooltip(message: "tap to show images Preview");
-                        },
-                      ),
-                      title: Text(
-                        sareeProvider.sarees[index]!.title,
-                      ),
-                      subtitle: Row(
-                        children: [
-                          Text(
-                            sareeProvider.sarees[index]!.date.toString(),
-                          ),
-                        ],
-                      ),
-                      trailing: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            "Qty: " +
-                                sareeProvider.sarees[index]!.size.toString(),
-                            style: TextStyle(color: Colors.red, fontSize: 15),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Text(
-                            "Rs: \u{20B9} " +
-                                sareeProvider.sarees[index]!.price.toString(),
-                            style: TextStyle(color: Colors.green, fontSize: 15),
-                          ),
-                        ],
-                      ),
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => ItemDetails(
-                              saree: sareeProvider.sarees[index],
-                            ),
-                          ),
-                        );
-                        Tooltip(message: 'tap to Detail');
-                      },
-                    ),
+                  return Items(
+                   
+                    index: index,
                   );
                 },
               ),
             ),
         ],
+      ),
+    );
+  }
+}
+
+class Items extends StatelessWidget {
+  const Items({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
+
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    var sarees = Provider.of<SareesChanger?>(context);
+    var sareeProvider = sarees!.sarees;
+    return Dismissible(
+      key: UniqueKey(),
+      onDismissed: (dismiss) {
+        sarees.removeSaree(index);
+      },
+      background: Container(
+        color: Colors.red,
+        alignment: Alignment.centerRight,
+        child: Icon(Icons.delete),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 4),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(6)),
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFF241E30), Color(0xFF4D1F7C)])),
+          child: ListTile(
+            leading: GestureDetector(
+              child: ClipOval(
+                child: kIsWeb
+                    ? Image.network(sareeProvider[index]!.imageUrl,
+                        height: 50, width: 50, fit: BoxFit.cover)
+                    : Image.file(
+                        File(sareeProvider[index]!.imageUrl),
+                        height: 50,
+                        width: 50,
+                        fit: BoxFit.cover,
+                      ),
+              ),
+              onTap: () {
+                AwesomeDialog(
+                  dialogType: DialogType.NO_HEADER,
+                  headerAnimationLoop: false,
+                  context: context,
+                  body: Padding(
+                    padding: const EdgeInsets.fromLTRB(5, 0, 5, 12),
+                    child: Container(
+                      child: kIsWeb
+                          ? Image.network(sareeProvider[index]!.imageUrl)
+                          : Image.file(
+                              File(sareeProvider[index]!.imageUrl),
+                              // cacheHeight: 350,
+                              cacheWidth: 300,
+                              cacheHeight: 300,
+                            ),
+                    ),
+                  ),
+                  width: 600,
+                )..show();
+                Tooltip(message: "tap to show images Preview");
+              },
+            ),
+            title: Text(
+              sareeProvider[index]!.title,
+            ),
+            subtitle: Row(
+              children: [
+                Text(
+                  "${DateFormat.yMMMd('en_IN').format(sareeProvider[index]!.date)}",
+                ),
+              ],
+            ),
+            trailing: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  "Qty: " + sareeProvider[index]!.size.toString(),
+                  style: TextStyle(color: Colors.red, fontSize: 15),
+                ),
+                SizedBox(
+                  height: 3,
+                ),
+                Text(
+                  "Rs: \u{20B9} " + sareeProvider[index]!.price.toString(),
+                  style: TextStyle(color: Colors.green, fontSize: 15),
+                ),
+              ],
+            ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ItemDetails(
+                    saree: sareeProvider[index],
+                  ),
+                ),
+              );
+              Tooltip(message: 'tap to Detail');
+            },
+          ),
+        ),
       ),
     );
   }

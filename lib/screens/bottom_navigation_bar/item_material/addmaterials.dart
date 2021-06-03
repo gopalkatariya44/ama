@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:ama/modal/materials.dart';
-import 'package:ama/modal/materialschanger.dart';
+import 'package:ama/modal/materials/materials.dart';
+import 'package:ama/modal/materials/materialschanger.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 

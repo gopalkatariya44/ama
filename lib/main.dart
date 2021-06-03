@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
-import './modal/sareeschanger.dart';
+import 'modal/sarees/sareeschanger.dart';
 import './resources/routes.dart';
 import './screens/screens.dart'
     show MaterialsChanger, MyHomePage, NotificationsScreen, SplashScreen;
 import './ama_theme.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async{
+  await initializeDateFormatting("en_IN").then((value) => runApp(MyApp()));
+  
 }
 
 class MyApp extends StatelessWidget {

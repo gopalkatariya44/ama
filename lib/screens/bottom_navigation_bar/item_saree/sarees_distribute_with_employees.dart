@@ -33,8 +33,10 @@ class SareesDistributeWithEmployees extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return Container(
-      child: Text("hello........."),
+    return Center(
+      child: Container(
+        child: Text("hello........."),
+      ),
     );
   }
 }
