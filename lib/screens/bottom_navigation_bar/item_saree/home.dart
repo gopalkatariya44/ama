@@ -151,7 +151,7 @@ class Items extends StatelessWidget {
                   style: TextStyle(color: Colors.red, fontSize: 15),
                 ),
                 SizedBox(
-                  height: 3,
+                  height: 3
                 ),
                 Text(
                   "Rs: \u{20B9} " + sareeProvider[index]!.price.toString(),

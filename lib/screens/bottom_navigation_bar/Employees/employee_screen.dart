@@ -45,21 +45,34 @@ class _EmployeesDataState extends State<EmployeesData> {
                 itemBuilder: (ctx, index) {
                   return GestureDetector(
                     child: ListTile(
-                      leading: CircleAvatar(),
+                      leading: CircleAvatar(
+                        
+                      ),
                       title: Text(employeeProvider.employee[index].name),
-                      subtitle:
-                          Text(employeeProvider.employee[index].description),
+                      subtitle: Text(employeeProvider.employee[index].saree),
                       trailing: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(employeeProvider.employee[index].price),
+                          Text(
+                            "Qty: " + employeeProvider.employee[index].quantity,
+                            style: TextStyle(color: Colors.red, fontSize: 15),
+                          ),
+                          SizedBox(height: 3),
+                          Text(
+                            "Rs: \u{20B9} " +
+                                employeeProvider.employee[index].price,
+                            style: TextStyle(color: Colors.green, fontSize: 15),
+                          ),
                         ],
                       ),
                     ),
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => EmployeeDetails(employee: employeeProvider.employee[index],),
+                          builder: (context) => EmployeeDetails(
+                            employee: employeeProvider.employee[index],
+                          ),
                         ),
                       );
                     },

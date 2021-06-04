@@ -11,8 +11,7 @@ class ChatScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        child: Card(
-          elevation: 10,
+        child: Container(
           child: Container(
             width: double.infinity,
             height: 70,
