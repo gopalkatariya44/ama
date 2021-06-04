@@ -74,6 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 context: context,
                 delegate: _selectedIndex == 3
                     ? MaterialSearchScreen()
+                    
                     : SareesSearchScreen(),
               );
             },

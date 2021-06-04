@@ -20,14 +20,14 @@ class _EmployeesDataState extends State<EmployeesData> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("No Sarees please add some"),
-            GestureDetector(
-              child: Icon(
-                Icons.add,
-                size: 50,
-              ),
-              onTap: () {},
-            ),
+            Text("No Users Available add some"),
+            // GestureDetector(
+            //   child: Icon(
+            //     Icons.add,
+            //     size: 50,
+            //   ),
+            //   onTap: () {},
+            // ),
           ],
         ),
       );
@@ -46,7 +46,7 @@ class _EmployeesDataState extends State<EmployeesData> {
                   return GestureDetector(
                     child: ListTile(
                       leading: CircleAvatar(
-                        
+                        backgroundColor: Colors.green,
                       ),
                       title: Text(employeeProvider.employee[index].name),
                       subtitle: Text(employeeProvider.employee[index].saree),

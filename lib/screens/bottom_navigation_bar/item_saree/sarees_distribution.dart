@@ -65,8 +65,9 @@ class _SareesDistributionState extends State<SareesDistribution> {
               ),
             ),
           ),
-          Card(
-            elevation: 10,
+          Divider(),
+          Container(
+
             child: Container(
               width: double.infinity,
               height: 70,

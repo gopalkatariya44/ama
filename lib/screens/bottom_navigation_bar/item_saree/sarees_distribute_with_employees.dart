@@ -43,23 +43,22 @@ class SareesDistributeWithEmployees extends SearchDelegate {
     return ListView.builder(
       itemCount: emp!.employee.length,
       itemBuilder: (ctx, index) => GestureDetector(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 8),
-          child: Card(
-            child: ListTile(
-              leading: ClipOval(),
-              title: Text(emp!.employee[index].name),
-              subtitle: Text(emp!.employee[index].description),
-              trailing: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.end,
-              ),
+        child: Container(
+          child: ListTile(
+            leading: CircleAvatar(backgroundColor: Colors.green),
+            title: Text(emp!.employee[index].name),
+            subtitle: Text(emp!.employee[index].description.toString()),
+            trailing: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.end,
             ),
           ),
         ),
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => AdduserDistributeSarees(user: emp!.employee[index],),
+            builder: (context) => AdduserDistributeSarees(
+              user: emp!.employee[index],
+            ),
           ));
         },
       ),

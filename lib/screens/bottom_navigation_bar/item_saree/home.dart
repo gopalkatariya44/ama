@@ -84,92 +84,89 @@ class Items extends StatelessWidget {
           child: Icon(Icons.delete),
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(6)),
-            // gradient: LinearGradient(
-            //     begin: Alignment.topLeft,
-            //     end: Alignment.bottomRight,
-            //     colors: [Color(0xFF4D1F7C),Color(0xFF241E30)
-            //     ],
-            //     ),
-          ),
-          child: ListTile(
-            leading: GestureDetector(
-              child: ClipOval(
-                child: kIsWeb
-                    ? Image.network(sareeProvider[index]!.imageUrl,
-                        height: 50, width: 50, fit: BoxFit.cover)
-                    : Image.file(
-                        File(sareeProvider[index]!.imageUrl),
-                        height: 50,
-                        width: 50,
-                        fit: BoxFit.cover,
-                      ),
-              ),
-              onTap: () {
-                AwesomeDialog(
-                  dialogType: DialogType.NO_HEADER,
-                  headerAnimationLoop: false,
-                  context: context,
-                  body: Padding(
-                    padding: const EdgeInsets.fromLTRB(5, 0, 5, 12),
-                    child: Container(
-                      child: kIsWeb
-                          ? Image.network(sareeProvider[index]!.imageUrl)
-                          : Image.file(
-                              File(sareeProvider[index]!.imageUrl),
-                              // cacheHeight: 350,
-                              cacheWidth: 300,
-                              cacheHeight: 300,
-                            ),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(6)),
+          // gradient: LinearGradient(
+          //     begin: Alignment.topLeft,
+          //     end: Alignment.bottomRight,
+          //     colors: [Color(0xFF4D1F7C),Color(0xFF241E30)
+          //     ],
+          //     ),
+        ),
+        child: ListTile(
+          leading: GestureDetector(
+            child: ClipOval(
+              child: kIsWeb
+                  ? Image.network(sareeProvider[index]!.imageUrl,
+                      height: 50, width: 50, fit: BoxFit.cover)
+                  : Image.file(
+                      File(sareeProvider[index]!.imageUrl),
+                      height: 50,
+                      width: 50,
+                      fit: BoxFit.cover,
                     ),
-                  ),
-                  width: 600,
-                )..show();
-                Tooltip(message: "tap to show images Preview");
-              },
-            ),
-            title: Text(
-              sareeProvider[index]!.title,
-            ),
-            subtitle: Row(
-              children: [
-                Text(
-                  "${DateFormat.yMMMd('en_IN').format(sareeProvider[index]!.date)}",
-                ),
-              ],
-            ),
-            trailing: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  "Qty: " + sareeProvider[index]!.size.toString(),
-                  style: TextStyle(color: Colors.red, fontSize: 15),
-                ),
-                SizedBox(
-                  height: 3
-                ),
-                Text(
-                  "Rs: \u{20B9} " + sareeProvider[index]!.price.toString(),
-                  style: TextStyle(color: Colors.green, fontSize: 15),
-                ),
-              ],
             ),
             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => ItemDetails(
-                    saree: sareeProvider[index],
+              AwesomeDialog(
+                dialogType: DialogType.NO_HEADER,
+                headerAnimationLoop: false,
+                context: context,
+                body: Padding(
+                  padding: const EdgeInsets.fromLTRB(5, 0, 5, 12),
+                  child: Container(
+                    child: kIsWeb
+                        ? Image.network(sareeProvider[index]!.imageUrl)
+                        : Image.file(
+                            File(sareeProvider[index]!.imageUrl),
+                            // cacheHeight: 350,
+                            cacheWidth: 300,
+                            cacheHeight: 300,
+                          ),
                   ),
                 ),
-              );
-              Tooltip(message: 'tap to Detail');
+                width: 600,
+              )..show();
+              Tooltip(message: "tap to show images Preview");
             },
           ),
+          title: Text(
+            sareeProvider[index]!.title,
+          ),
+          subtitle: Row(
+            children: [
+              Text(
+                "${DateFormat.yMMMd('en_IN').format(sareeProvider[index]!.date)}",
+              ),
+            ],
+          ),
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                "Qty: " + sareeProvider[index]!.size.toString(),
+                style: TextStyle(color: Colors.red, fontSize: 15),
+              ),
+              SizedBox(
+                height: 3
+              ),
+              Text(
+                "Rs: \u{20B9} " + sareeProvider[index]!.price.toString(),
+                style: TextStyle(color: Colors.green, fontSize: 15),
+              ),
+            ],
+          ),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => ItemDetails(
+                  saree: sareeProvider[index],
+                ),
+              ),
+            );
+            Tooltip(message: 'tap to Detail');
+          },
         ),
       ),
     );
