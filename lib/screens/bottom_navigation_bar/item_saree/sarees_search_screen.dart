@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:ama/modal/sarees/sarees.dart';
 import 'package:ama/modal/sarees/sareeschanger.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/foundation.dart';
@@ -8,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-import 'bottom_navigation_bar/item_saree/item_details.dart';
+import 'item_details.dart';
 
-class SearchBar extends SearchDelegate {
+class SareesSearchScreen extends SearchDelegate {
   SareesChanger? saree;
   @override
   List<Widget> buildActions(BuildContext context) {

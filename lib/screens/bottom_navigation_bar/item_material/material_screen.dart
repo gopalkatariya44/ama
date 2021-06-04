@@ -37,17 +37,17 @@ class MaterialScreen extends StatelessWidget {
           ],
         ),
       );
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          if (materialProvider == null) CircularProgressIndicator(),
-          if (materialProvider.materials.isNotEmpty)
-            Expanded(
-              child: ListView.builder(
-                physics: BouncingScrollPhysics(),
-                itemBuilder: (ctx, index) {
-                  return Container(
+    return Column(
+      children: [
+        if (materialProvider == null) CircularProgressIndicator(),
+        if (materialProvider.materials.isNotEmpty)
+          Expanded(
+            child: ListView.builder(
+              physics: BouncingScrollPhysics(),
+              itemBuilder: (ctx, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 8),
+                  child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(6)),
                         gradient: LinearGradient(
@@ -129,13 +129,13 @@ class MaterialScreen extends StatelessWidget {
                       ),
                       onTap: () {},
                     ),
-                  );
-                },
-                itemCount: materialProvider.materials.length,
-              ),
+                  ),
+                );
+              },
+              itemCount: materialProvider.materials.length,
             ),
-        ],
-      ),
+          ),
+      ],
     );
   }
 }

@@ -1,15 +1,14 @@
 import 'package:ama/resources/routes.dart';
 import 'package:ama/screens/bottom_navigation_bar/item_material/addmaterials.dart';
 import 'package:ama/screens/drawer.dart';
-import 'package:ama/screens/search_screen.dart';
+import 'package:ama/screens/bottom_navigation_bar/item_saree/sarees_search_screen.dart';
 import 'package:flutter/material.dart';
+import 'bottom_navigation_bar/item_material/materials_search_screen.dart';
 import 'bottom_navigation_bar/item_saree/addsaree.dart';
 import 'screens.dart'
     show HomePage, EmployeesData, ChatScreen, Calculator, MaterialScreen;
 
 class MyHomePage extends StatefulWidget {
-
-  
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -45,8 +44,6 @@ class _MyHomePageState extends State<MyHomePage> {
       _selectedIndex = index;
     });
   }
-  
-  
 
   @override
   Widget build(BuildContext context) {
@@ -67,18 +64,20 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           // Visibility(
           //   visible: _selectedIndex == 4 ? isVisible = false : isVisible,
-              // child: 
-              IconButton(
-              icon: Icon(
-                Icons.search, // search button
-              ),
-              onPressed: () {
-                showSearch(
-                  context: context,
-                  delegate: SearchBar(),
-                );
-              },
+          // child:
+          IconButton(
+            icon: Icon(
+              Icons.search, // search button
             ),
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: _selectedIndex == 3
+                    ? MaterialSearchScreen()
+                    : SareesSearchScreen(),
+              );
+            },
+          ),
           // ),
           IconButton(
             icon: Icon(

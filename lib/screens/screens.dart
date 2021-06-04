@@ -1,5 +1,5 @@
 export 'setting_screen.dart';
-export 'search_screen.dart';
+export 'bottom_navigation_bar/item_saree/sarees_search_screen.dart';
 export 'profile_page.dart';
 export 'notifications_screen.dart';
 export 'bottom_navigation_bar/item_saree/item_details.dart';
