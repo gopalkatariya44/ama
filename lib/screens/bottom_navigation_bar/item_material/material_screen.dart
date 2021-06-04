@@ -50,10 +50,11 @@ class MaterialScreen extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(6)),
-                        gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [Color(0xFF241E30), Color(0xFF4D1F7C)])),
+                        // gradient: LinearGradient(
+                        //     begin: Alignment.topLeft,
+                        //     end: Alignment.bottomRight,
+                        //     colors: [Color(0xFF241E30), Color(0xFF4D1F7C)]),
+                            ),
                     child: ListTile(
                       leading: GestureDetector(
                         child: ClipOval(

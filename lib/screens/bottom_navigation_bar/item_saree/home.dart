@@ -49,10 +49,7 @@ class HomePage extends StatelessWidget {
                 itemCount: sareeProvider.sarees.length,
                 physics: BouncingScrollPhysics(),
                 itemBuilder: (ctx, index) {
-                  return Items(
-                   
-                    index: index,
-                  );
+                  return Items(index: index);
                 },
               ),
             ),
@@ -91,11 +88,14 @@ class Items extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 4),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(6)),
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Color(0xFF241E30), Color(0xFF4D1F7C)])),
+            borderRadius: BorderRadius.all(Radius.circular(6)),
+            // gradient: LinearGradient(
+            //     begin: Alignment.topLeft,
+            //     end: Alignment.bottomRight,
+            //     colors: [Color(0xFF4D1F7C),Color(0xFF241E30)
+            //     ],
+            //     ),
+          ),
           child: ListTile(
             leading: GestureDetector(
               child: ClipOval(
