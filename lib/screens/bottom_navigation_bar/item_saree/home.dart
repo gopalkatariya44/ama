@@ -2,6 +2,7 @@ import 'package:ama/modal/sarees/sareeschanger.dart';
 import 'package:ama/screens/bottom_navigation_bar/item_saree/item_details.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -71,19 +72,38 @@ class Items extends StatelessWidget {
   Widget build(BuildContext context) {
     var sarees = Provider.of<SareesChanger?>(context);
     var sareeProvider = sarees!.sarees;
-    return Dismissible(
-      key: UniqueKey(),
-      onDismissed: (dismiss) {
-        sarees.removeSaree(index);
-      },
-      background: Container(
-        color: Colors.red,
-        alignment: Alignment.centerRight,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Icon(Icons.delete),
+    return Slidable(
+      actionPane: SlidableDrawerActionPane(),
+      actionExtentRatio: 0.25,
+      actions: <Widget>[
+        IconSlideAction(
+          caption: 'Archive',
+          color: Colors.blue,
+          icon: Icons.archive,
+          onTap: () {},
         ),
-      ),
+        IconSlideAction(
+          caption: 'Share',
+          color: Colors.indigo,
+          icon: Icons.share,
+          onTap: () {},
+        ),
+      ],
+      secondaryActions: <Widget>[
+        IconSlideAction(
+          caption: 'More',
+          color: Colors.black45,
+          icon: Icons.more_horiz,
+          onTap: () {},
+        ),
+        IconSlideAction(
+          caption: 'Delete',
+          color: Colors.red,
+          icon: Icons.delete,
+          onTap: () => sarees.removeSaree(index),
+        ),
+      ],
+      key: UniqueKey(),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(6)),
@@ -148,9 +168,7 @@ class Items extends StatelessWidget {
                 "Qty: " + sareeProvider[index]!.size.toString(),
                 style: TextStyle(color: Colors.red, fontSize: 15),
               ),
-              SizedBox(
-                height: 3
-              ),
+              SizedBox(height: 3),
               Text(
                 "Rs: \u{20B9} " + sareeProvider[index]!.price.toString(),
                 style: TextStyle(color: Colors.green, fontSize: 15),
