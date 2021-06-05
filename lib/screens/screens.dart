@@ -13,3 +13,4 @@ export 'bottom_navigation_bar/Employees/employee_screen.dart';
 export 'bottom_navigation_bar/item_saree/home.dart';
 export 'bottom_navigation_bar/item_material/material_screen.dart';
 export '../modal/materials/materialschanger.dart';
+export '../modal/sarees/sarees_distribute/sarees_distributechanger.dart';

@@ -1,5 +1,6 @@
 import 'package:ama/modal/employees/employees.dart';
 import 'package:ama/modal/employees/employeeschanger.dart';
+import 'package:ama/screens/bottom_navigation_bar/item_saree/adduser_%20distribute_sarees.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'modal/sarees/sareeschanger.dart';
 import './resources/routes.dart';
 import './screens/screens.dart'
-    show MaterialsChanger, MyHomePage, NotificationsScreen, SplashScreen;
+    show MaterialsChanger, MyHomePage, NotificationsScreen, SareesDistributeChanger, SplashScreen;
 import './ama_theme.dart';
 
 void main() async{
@@ -28,6 +29,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<MaterialsChanger?>(
           create: (context) => MaterialsChanger(),
+        ),
+        ChangeNotifierProvider<SareesDistributeChanger?>(
+          create: (context) => SareesDistributeChanger(),
         ),
       ],
       child: MaterialApp(

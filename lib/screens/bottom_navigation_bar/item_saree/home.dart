@@ -77,25 +77,26 @@ class Items extends StatelessWidget {
       actionExtentRatio: 0.25,
       actions: <Widget>[
         IconSlideAction(
-          caption: 'Archive',
+          caption: 'Edit',
           color: Colors.blue,
-          icon: Icons.archive,
+          icon: Icons.edit,
           onTap: () {},
         ),
-        IconSlideAction(
-          caption: 'Share',
-          color: Colors.indigo,
-          icon: Icons.share,
-          onTap: () {},
-        ),
+        // IconSlideAction(
+        //   caption: 'Share',
+        //   color: Colors.indigo,
+        //   icon: Icons.share,
+        //   onTap: () {},
+        // ),
       ],
+      closeOnScroll: true,
       secondaryActions: <Widget>[
-        IconSlideAction(
-          caption: 'More',
-          color: Colors.black45,
-          icon: Icons.more_horiz,
-          onTap: () {},
-        ),
+        // IconSlideAction(
+        //   caption: 'More',
+        //   color: Colors.black45,
+        //   icon: Icons.more_horiz,
+        //   onTap: () {},
+        // ),
         IconSlideAction(
           caption: 'Delete',
           color: Colors.red,
