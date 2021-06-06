@@ -1,17 +1,17 @@
 class SareesDistribute {
   String? imageUrl;
-  String? name;
+  String name;
   double price;
   double size;
   DateTime? date;
   String? description;
 
   SareesDistribute({
-     this.imageUrl,
-this.name,
+    this.imageUrl,
+    required this.name,
     required this.price,
     required this.size,
-     this.date,
+    this.date,
     this.description,
   });
 }

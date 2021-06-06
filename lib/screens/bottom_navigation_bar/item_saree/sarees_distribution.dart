@@ -77,7 +77,7 @@ class _AddEmployeeState extends State<AddEmployee> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("No user please add some"),
+            Text("Distribute Saree"),
           ],
         ),
       );
@@ -114,7 +114,7 @@ class _AddEmployeeState extends State<AddEmployee> {
                   key: UniqueKey(),
                   child: ListTile(
                     leading: CircleAvatar(),
-                    title: Text("employee!.name"),
+                    title: Text(sareesDistributeProvider.sareesdistribute[index]!.name),
                     subtitle: Text("data"),
                     trailing: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -131,7 +131,7 @@ class _AddEmployeeState extends State<AddEmployee> {
                         Text(
                           "Rs: \u{20B9} " +
                               sareesDistributeProvider
-                                  .sareesdistribute[index]!.size
+                                  .sareesdistribute[index]!.price
                                   .toString(),
                           style: TextStyle(color: Colors.green, fontSize: 15),
                         ),

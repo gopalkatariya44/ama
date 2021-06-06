@@ -15,13 +15,13 @@ class AdduserDistributeSarees extends StatefulWidget {
 
 class _AdduserDistributeSareesState extends State<AdduserDistributeSarees> {
   late SareesDistributeChanger? sareesDistributeChanger;
-
+  String? name;
   double? price;
   double? size;
 
   final key = GlobalKey<FormState>();
 
-  void onSave() async {
+  void onSave(String name) async {
     if (key.currentState!.validate()) {
       key.currentState!.save();
 
@@ -29,12 +29,13 @@ class _AdduserDistributeSareesState extends State<AdduserDistributeSarees> {
         context: context,
         builder: (ctx) => AlertDialog(
           title: Text("Confirm"),
-          content: Text("Are you sure you want to add the product"),
+          content: Text("Are you sure you want to add the user"),
           actions: [
             TextButton(
               onPressed: () async {
                 sareesDistributeChanger!.addSareesDistribute(
                   new SareesDistribute(
+                    name: name,
                     price: price!,
                     size: size!,
                   ),
@@ -128,7 +129,9 @@ class _AdduserDistributeSareesState extends State<AdduserDistributeSarees> {
                         borderRadius: BorderRadius.all(Radius.circular(3)),
                       ),
                     ),
-                    onPressed: () => onSave(),
+                    onPressed: () => onSave(
+                      name = widget.user!.name,
+                    ),
                     child: Text(
                       "Add User",
                       textAlign: TextAlign.center,

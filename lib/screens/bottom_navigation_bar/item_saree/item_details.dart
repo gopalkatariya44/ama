@@ -43,7 +43,6 @@ class _ItemDetailsState extends State<ItemDetails>
       ),
       body: TabBarView(
         controller: _tabController,
-        
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -137,7 +136,10 @@ class _ItemDetailsState extends State<ItemDetails>
                                 Text("Description",
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold)),
-                                Text(widget.saree!.description.toString()),
+                                widget.saree!.description!.isEmpty
+                                    ? Text("No Description")
+                                    : Text(
+                                        widget.saree!.description.toString()),
                               ],
                             ),
                           ),
