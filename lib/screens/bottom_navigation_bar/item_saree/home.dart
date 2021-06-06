@@ -106,15 +106,6 @@ class Items extends StatelessWidget {
       ],
       key: UniqueKey(),
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(6)),
-          // gradient: LinearGradient(
-          //     begin: Alignment.topLeft,
-          //     end: Alignment.bottomRight,
-          //     colors: [Color(0xFF4D1F7C),Color(0xFF241E30)
-          //     ],
-          //     ),
-        ),
         child: ListTile(
           leading: GestureDetector(
             child: ClipOval(

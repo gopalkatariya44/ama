@@ -1,6 +1,8 @@
+import 'package:ama/modal/employees/employees.dart';
 import 'package:ama/modal/sarees/sarees_distribute/sarees_distributechanger.dart';
 import 'package:ama/screens/bottom_navigation_bar/item_saree/sarees_distribute_with_employees.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 
 class SareesDistribution extends StatefulWidget {
@@ -14,127 +16,56 @@ class SareesDistribution extends StatefulWidget {
 class _SareesDistributionState extends State<SareesDistribution> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.all(Radius.circular(3))),
-            width: MediaQuery.of(context).size.width,
-            child: Padding(
+    return Scaffold(
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          children: [
+            Expanded(child: AddEmployee()),
+            Divider(),
+            Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Center(
-                child: Text("-- Distribute Sarees --",
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Quantity : ",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text(widget.size.toString(),
+                        style: TextStyle(color: Colors.red)),
+                  ],
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding:
-                const EdgeInsets.only(top: 12, bottom: 12, left: 4, right: 4),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Quantity",
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text(widget.size.toString(),
-                          style: TextStyle(color: Colors.red)),
-                    ],
-                  ),
-                  //add Employee for Distributes saree
-
-                  CircleAvatar(
-                    backgroundColor: Colors.green,
-                    child: IconButton(
-                      onPressed: () {
-                        showSearch(
-                          context: context,
-                          delegate: SareesDistributeWithEmployees(),
-                        );
-                      },
-                      icon: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Divider(),
-
-          // Container(
-          //   child: Container(
-          //     width: double.infinity,
-          //     height: 70,
-          //     child: Padding(
-          //       padding: const EdgeInsets.all(8.0),
-          //       child: Row(
-          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //         children: [
-          //           Row(
-          //             children: [
-          //               Image.asset(
-          //                 'assets/images/as.png',
-          //                 fit: BoxFit.cover,
-          //                 cacheHeight: 50,
-          //                 cacheWidth: 50,
-          //               ),
-          //               SizedBox(width: 25),
-          //               Column(
-          //                 crossAxisAlignment: CrossAxisAlignment.start,
-          //                 mainAxisAlignment: MainAxisAlignment.center,
-          //                 children: [
-          //                   Text(
-          //                     'User 1',
-          //                     style: TextStyle(
-          //                       fontSize: 17,
-          //                     ),
-          //                   ),
-          //                   SizedBox(height: 5),
-          //                   Text(
-          //                     'Description',
-          //                     style: TextStyle(
-          //                       fontSize: 12,
-          //                     ),
-          //                   ),
-          //                 ],
-          //               ),
-          //             ],
-          //           ),
-          //           Column(
-          //             mainAxisAlignment: MainAxisAlignment.center,
-          //             crossAxisAlignment: CrossAxisAlignment.end,
-          //             children: [
-          //               Text("Qty: " +widget.size.toString(),style: TextStyle(color: Colors.red),),
-          //               SizedBox(height: 5),
-          //               Text("\u{20B9} " +(widget.prise*widget.size).toString(),style: TextStyle(color: Colors.green)),
-          //             ],
-          //           )
-          //         ],
-          //       ),
-          //     ),
-          //   ),
-          // ),
-
-          AddEmployee(),
-        ],
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        backgroundColor: Colors.green,
+        mini: true,
+        onPressed: () {
+          showSearch(
+            context: context,
+            delegate: SareesDistributeWithEmployees(),
+            //add Employee for Distributes saree
+          );
+        },
       ),
     );
   }
 }
 
-class AddEmployee extends StatelessWidget {
-  const AddEmployee({Key? key}) : super(key: key);
+class AddEmployee extends StatefulWidget {
+  Employees? employee;
+  AddEmployee({Key? key, this.employee}) : super(key: key);
 
+  @override
+  _AddEmployeeState createState() => _AddEmployeeState();
+}
+
+class _AddEmployeeState extends State<AddEmployee> {
   @override
   Widget build(BuildContext context) {
     var sareesDistributeProvider =
@@ -150,21 +81,68 @@ class AddEmployee extends StatelessWidget {
           ],
         ),
       );
-    return Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          if (sareesDistributeProvider == null) CircularProgressIndicator(),
-          if (sareesDistributeProvider.sareesdistribute.isNotEmpty)
-            Expanded(
-              child: ListView.builder(itemBuilder: (ctx, index) {
-                return ListTile(
-                  title: Text(sareesDistributeProvider.sareesdistribute[index]!.name),
+
+    return Column(
+      children: [
+        if (sareesDistributeProvider == null) CircularProgressIndicator(),
+        if (sareesDistributeProvider.sareesdistribute.isNotEmpty)
+          Expanded(
+            child: ListView.builder(
+              itemCount: sareesDistributeProvider.sareesdistribute.length,
+              physics: BouncingScrollPhysics(),
+              itemBuilder: (ctx, index) {
+                return Slidable(
+                  actionPane: SlidableDrawerActionPane(),
+                  actionExtentRatio: 0.25,
+                  actions: [
+                    IconSlideAction(
+                      caption: 'Edit',
+                      color: Colors.blue,
+                      icon: Icons.edit,
+                      onTap: () {},
+                    ),
+                  ],
+                  closeOnScroll: true,
+                  secondaryActions: <Widget>[
+                    IconSlideAction(
+                      caption: 'Delete',
+                      color: Colors.red,
+                      icon: Icons.delete,
+                      onTap: () {},
+                    ),
+                  ],
+                  key: UniqueKey(),
+                  child: ListTile(
+                    leading: CircleAvatar(),
+                    title: Text("employee!.name"),
+                    subtitle: Text("data"),
+                    trailing: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Qty: " +
+                              sareesDistributeProvider
+                                  .sareesdistribute[index]!.size
+                                  .toString(),
+                          style: TextStyle(color: Colors.red, fontSize: 15),
+                        ),
+                        SizedBox(height: 3),
+                        Text(
+                          "Rs: \u{20B9} " +
+                              sareesDistributeProvider
+                                  .sareesdistribute[index]!.size
+                                  .toString(),
+                          style: TextStyle(color: Colors.green, fontSize: 15),
+                        ),
+                      ],
+                    ),
+                  ),
                 );
-              }),
+              },
             ),
-        ],
-      ),
+          ),
+      ],
     );
   }
 }
