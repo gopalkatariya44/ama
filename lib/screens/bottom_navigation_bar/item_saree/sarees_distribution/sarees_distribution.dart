@@ -1,6 +1,6 @@
 import 'package:ama/modal/employees/employees.dart';
 import 'package:ama/modal/sarees/sarees_distribute/sarees_distributechanger.dart';
-import 'package:ama/screens/bottom_navigation_bar/item_saree/sarees_distribute_with_employees.dart';
+import 'package:ama/screens/bottom_navigation_bar/item_saree/sarees_distribution/sarees_distribute_with_employees.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
@@ -30,10 +30,11 @@ class _SareesDistributionState extends State<SareesDistribution> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Quantity : ",
+                    Text("Quantity :  ",
                         style: TextStyle(fontWeight: FontWeight.bold)),
                     Text(widget.size.toString(),
                         style: TextStyle(color: Colors.red)),
+                    Text(" left",style: TextStyle(fontSize: 7),)
                   ],
                 ),
               ),
@@ -45,6 +46,7 @@ class _SareesDistributionState extends State<SareesDistribution> {
         child: Icon(Icons.add),
         backgroundColor: Colors.green,
         mini: true,
+        tooltip: 'add Users',
         onPressed: () {
           showSearch(
             context: context,

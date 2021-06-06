@@ -1,6 +1,5 @@
-import 'package:ama/modal/employees/employees.dart';
 import 'package:ama/modal/employees/employeeschanger.dart';
-import 'package:ama/screens/bottom_navigation_bar/item_saree/adduser_%20distribute_sarees.dart';
+import 'package:ama/screens/bottom_navigation_bar/item_saree/sarees_distribution/adduser_%20distribute_sarees.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

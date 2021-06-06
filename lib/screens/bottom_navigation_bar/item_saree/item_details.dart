@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:ama/modal/sarees/sarees.dart';
-import 'package:ama/screens/bottom_navigation_bar/item_saree/sarees_distribute_with_employees.dart';
-import 'package:ama/screens/bottom_navigation_bar/item_saree/sarees_distribution.dart';
+import 'package:ama/screens/bottom_navigation_bar/item_saree/sarees_distribution/sarees_distribution.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -31,11 +30,13 @@ class _ItemDetailsState extends State<ItemDetails>
       appBar: AppBar(
         bottom: TabBar(
           controller: _tabController,
+          labelColor: Colors.green,
+          unselectedLabelColor: Colors.white60,
           indicatorColor: Colors.green,
           tabs: [
-            Tab(text: 'Saree Details'),
+            Tab(text: 'Details'),
             Tab(
-              text: 'Distributes sarees',
+              text: 'Distributes',
             )
           ],
         ),

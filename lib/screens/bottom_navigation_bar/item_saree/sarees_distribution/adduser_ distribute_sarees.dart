@@ -78,6 +78,9 @@ class _AdduserDistributeSareesState extends State<AdduserDistributeSarees> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                   keyboardType: TextInputType.numberWithOptions(
+                    decimal: true,
+                  ),
                   key: UniqueKey(),
                   decoration: InputDecoration(
                     labelText: "Quantity",
