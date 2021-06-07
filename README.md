@@ -13,6 +13,9 @@ A few resources to get you started if this is your first Flutter project:
 
 ## Screenshot
 
+(http://assets/images/home.png)
+(http://assets/images/addsaree.png)
+(http://assets/images/emp.png)
 
 
 For help getting started with Flutter, view our
