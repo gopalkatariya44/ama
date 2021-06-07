@@ -13,7 +13,7 @@ A few resources to get you started if this is your first Flutter project:
 
 ## Screenshot
 
-![Alt text](/assets/images/home.png){ width: 200px; }
+![Alt text](/assets/images/home.png)
 ![Alt text](/assets/images/addsaree.png)
 ![Alt text](/assets/images/emp.png)
 
