@@ -1,6 +1,6 @@
 # ama
 
-this is new Flutter project for management the sarees Distribution.
+This is new Flutter project for management the sarees Distribution.
 
 ## Getting Started
 
