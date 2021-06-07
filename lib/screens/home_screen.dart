@@ -45,23 +45,23 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _notification() {
+    setState(
+      () {
+        Navigator.pushNamed(
+          context,
+          Routes.notificationScreen,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(_widgetOptions[_selectedIndex]['title']), //app title
         actions: [
-          IconButton(
-            icon: Icon(
-              Icons.notifications, // search button
-            ),
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                Routes.notificationScreen,
-              );
-            },
-          ),
           // Visibility(
           //   visible: _selectedIndex == 4 ? isVisible = false : isVisible,
           // child:
@@ -92,6 +92,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               );
             },
+          ),
+
+          PopupMenuButton(
+            icon: Icon(Icons.more_vert),
+            itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+               PopupMenuItem(
+                child: ListTile(
+                  leading: Icon(Icons.notifications),
+                  title: Text('Notifications'),
+              onTap: _notification,
+                ),
+              ),
+              // const PopupMenuDivider(),
+              const PopupMenuItem(
+                child: ListTile(
+                  leading: Icon(Icons.anchor),
+                  title: Text('Item 2'),
+                ),
+              ),
+              const PopupMenuItem(
+                child: ListTile(
+                  leading: Icon(Icons.article),
+                  title: Text('Item 3'),
+                ),
+              ),
+            ],
           ),
         ],
       ),

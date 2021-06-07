@@ -117,7 +117,7 @@ class _AddEmployeeState extends State<AddEmployee> {
                   child: ListTile(
                     leading: CircleAvatar(),
                     title: Text(sareesDistributeProvider.sareesdistribute[index]!.name),
-                    subtitle: Text("data"),
+                    // subtitle: Text("data"),
                     trailing: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
