@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'bottom_navigation_bar/item_material/materials_search_screen.dart';
 import 'bottom_navigation_bar/item_saree/addsaree.dart';
 import 'screens.dart'
-    show HomePage, EmployeesData, ChatScreen, Calculator, MaterialScreen;
+    show Calculator, ChatScreen, EmployeesData, HomePage, MaterialScreen, SplashScreen;
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -56,6 +56,15 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void _logOut() {
+    setState(
+      () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => SplashScreen()));
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,24 +106,25 @@ class _MyHomePageState extends State<MyHomePage> {
           PopupMenuButton(
             icon: Icon(Icons.more_vert),
             itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-               PopupMenuItem(
+              PopupMenuItem(
                 child: ListTile(
-                  leading: Icon(Icons.notifications),
+                  leading: Icon(Icons.notifications, color: Colors.green),
                   title: Text('Notifications'),
-              onTap: _notification,
+                  onTap: _notification,
                 ),
               ),
               // const PopupMenuDivider(),
-              const PopupMenuItem(
+              PopupMenuItem(
                 child: ListTile(
-                  leading: Icon(Icons.anchor),
-                  title: Text('Item 2'),
+                  leading: Icon(Icons.logout, color: Colors.green),
+                  title: Text('Logout'),
+                  onTap: _logOut,
                 ),
               ),
               const PopupMenuItem(
                 child: ListTile(
-                  leading: Icon(Icons.article),
-                  title: Text('Item 3'),
+                  leading: Icon(Icons.refresh,color: Colors.green,),
+                  title: Text('Refresh'),
                 ),
               ),
             ],

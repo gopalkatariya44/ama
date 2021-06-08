@@ -79,6 +79,7 @@ class _AddEmployeeState extends State<AddEmployee> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset('assets/images/tr.png', cacheHeight: 400),
             Text("Distribute Saree"),
           ],
         ),

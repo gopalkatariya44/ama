@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'addmaterials.dart';
 import 'package:ama/modal/materials/materialschanger.dart';
 import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
@@ -8,8 +7,6 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'dart:io';
 
 class MaterialScreen extends StatelessWidget {
-  
-  
   @override
   Widget build(BuildContext context) {
     var materialProvider = Provider.of<MaterialsChanger?>(context);
@@ -20,20 +17,9 @@ class MaterialScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset('assets/images/add.png', cacheHeight: 200),
+            SizedBox(height: 10),
             Text("No materials please add some"),
-            GestureDetector(
-              child: Icon(
-                Icons.add,
-                size: 50,
-              ),
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => AddMaterialScreen(),
-                  ),
-                );
-              },
-            ),
           ],
         ),
       );
@@ -46,15 +32,16 @@ class MaterialScreen extends StatelessWidget {
               physics: BouncingScrollPhysics(),
               itemBuilder: (ctx, index) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 8),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                   child: Container(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(6)),
-                        // gradient: LinearGradient(
-                        //     begin: Alignment.topLeft,
-                        //     end: Alignment.bottomRight,
-                        //     colors: [Color(0xFF241E30), Color(0xFF4D1F7C)]),
-                            ),
+                      borderRadius: BorderRadius.all(Radius.circular(6)),
+                      // gradient: LinearGradient(
+                      //     begin: Alignment.topLeft,
+                      //     end: Alignment.bottomRight,
+                      //     colors: [Color(0xFF241E30), Color(0xFF4D1F7C)]),
+                    ),
                     child: ListTile(
                       leading: GestureDetector(
                         child: ClipOval(
@@ -103,7 +90,8 @@ class MaterialScreen extends StatelessWidget {
                       subtitle: Row(
                         children: [
                           Text(
-                            DateFormat.yMMMd('en_IN').format(materialProvider.materials[index]!.date),
+                            DateFormat.yMMMd('en_IN').format(
+                                materialProvider.materials[index]!.date),
                           ),
                         ],
                       ),

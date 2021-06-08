@@ -21,20 +21,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset('assets/images/add.png', cacheHeight: 200),
+            SizedBox(height: 10),
             Text("No Sarees please add some"),
-            GestureDetector(
-              child: Icon(
-                Icons.add,
-                size: 50,
-              ),
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => AddSareeScreen(),
-                  ),
-                );
-              },
-            ),
           ],
         ),
       );
@@ -120,6 +109,7 @@ class Items extends StatelessWidget {
                     ),
             ),
             onTap: () {
+              showDialog(context: context, builder: (context) => AlertDialog());
               AwesomeDialog(
                 dialogType: DialogType.NO_HEADER,
                 headerAnimationLoop: false,

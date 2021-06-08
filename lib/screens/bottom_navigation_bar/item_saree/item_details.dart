@@ -31,7 +31,7 @@ class _ItemDetailsState extends State<ItemDetails>
         bottom: TabBar(
           controller: _tabController,
           labelColor: Colors.green,
-          unselectedLabelColor: Colors.white60,
+          // unselectedLabelColor: Colors.white60,
           indicatorColor: Colors.green,
           tabs: [
             Tab(text: 'Details'),
