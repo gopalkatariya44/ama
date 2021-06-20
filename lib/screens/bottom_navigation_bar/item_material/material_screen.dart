@@ -24,6 +24,7 @@ class MaterialScreen extends StatelessWidget {
         ),
       );
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         if (materialProvider == null) CircularProgressIndicator(),
         if (materialProvider.materials.isNotEmpty)
@@ -124,6 +125,17 @@ class MaterialScreen extends StatelessWidget {
               itemCount: materialProvider.materials.length,
             ),
           ),
+          Divider(),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text("Total :  "),
+              Text("\u{20B9} "+materialProvider.total().toString()),
+            ],
+          ),
+        ),
       ],
     );
   }
