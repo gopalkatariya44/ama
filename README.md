@@ -12,10 +12,12 @@ A few resources to get you started if this is your first Flutter project:
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
 ## Screenshot
-
-<img src="/assets/images/home.png" height="700">
-<img src="/assets/images/addsaree.png" height="700">
-<img src="/assets/images/emp.png" height="700">
+###### Home page
+><img src="/assets/images/home.png" height="700">
+###### Addsaree page
+><img src="/assets/images/addsaree.png" height="700">
+###### Employee page
+><img src="/assets/images/emp.png" height="700">
 
 
 
