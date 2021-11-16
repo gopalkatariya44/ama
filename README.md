@@ -13,9 +13,9 @@ A few resources to get you started if this is your first Flutter project:
 
 ## Screenshot
 
-![Alt text]<img src="/assets/images/home.png" height="700">
-![Alt text]<img src="/assets/images/addsaree.png" height="700">
-![Alt text]<img src="/assets/images/emp.png" height="700">
+![]<img src="/assets/images/home.png" height="700">
+![]<img src="/assets/images/addsaree.png" height="700">
+![]<img src="/assets/images/emp.png" height="700">
 
 
 
