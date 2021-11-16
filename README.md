@@ -13,10 +13,11 @@ A few resources to get you started if this is your first Flutter project:
 
 ## Screenshot
 
-![Alt text](/assets/images/home.png)
-![test image size]<img src="/assets/images/home.png" width="400" height="790">
-![Alt text](/assets/images/home.png)
-![Alt text](/assets/images/emp.png)
+![Alt text]<img src="/assets/images/home.png" height="700">
+![Alt text]<img src="/assets/images/addsaree.png" height="700">
+![Alt text]<img src="/assets/images/emp.png" height="700">
+
+
 
 
 For help getting started with Flutter, view our
