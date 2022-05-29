@@ -8,7 +8,7 @@ import './resources/routes.dart';
 import './screens/screens.dart'
     show MaterialsChanger, MyHomePage, NotificationsScreen, SareesDistributeChanger, SplashScreen;
 import './ama_theme.dart';
-
+// parth commit
 void main() async{
   await initializeDateFormatting("en_IN").then((value) => runApp(MyApp()));
   
